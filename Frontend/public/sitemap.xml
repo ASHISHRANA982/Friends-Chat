@@ -3,23 +3,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://friends-chat.vercel.app/</loc>
+        <loc>https://friendsmsg.vercel.app/</loc>
     </url>
 
     <url>
-        <loc>https://friends-chat.vercel.app/about</loc>
+        <loc>https://friendsmsg.vercel.app/about</loc>
     </url>
 
     <url>
-        <loc>https://friends-chat.vercel.app/contact</loc>
+        <loc>https://friendsmsg.vercel.app/contact</loc>
     </url>
 
      <url>
-        <loc>https://friends-chat.vercel.app/login</loc>
+        <loc>https://friendsmsg.vercel.app/login</loc>
     </url>
 
      <url>
-        <loc>https://friends-chat.vercel.app/register</loc>
+        <loc>https://friendsmsg.vercel.app/register</loc>
     </url>
 
 </urlset>
