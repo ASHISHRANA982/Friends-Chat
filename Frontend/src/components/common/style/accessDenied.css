@@ -1,0 +1,73 @@
+.denied-container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f4f7fb;
+}
+
+.denied-card{
+    width:420px;
+    padding:40px;
+    text-align:center;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.lock-icon{
+    font-size:60px;
+    color:#ff4d4f;
+    margin-bottom:15px;
+}
+
+.denied-card h1{
+    font-size:70px;
+    color:#ff4d4f;
+    margin:0;
+}
+
+.denied-card h2{
+    margin:10px 0;
+    color:#333;
+}
+
+.denied-card p{
+    color:#666;
+    line-height:1.6;
+    margin:20px 0;
+}
+
+.btn-group{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.home-btn,
+.login-btn{
+    padding:12px 22px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.home-btn{
+    background:#00A884;
+    color:white;
+}
+
+.home-btn:hover{
+    background:#008d70;
+}
+
+.login-btn{
+    background:#0F172A;
+    color:white;
+}
+
+.login-btn:hover{
+    background:#1e293b;
+}

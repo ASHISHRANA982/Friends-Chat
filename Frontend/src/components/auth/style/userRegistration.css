@@ -1,0 +1,396 @@
+
+.register-user-main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  background-color: #F8FAFC;
+}
+
+.register-user-card {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  align-items: center;
+}
+
+.register-inner-card-1 {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+
+.register-inner-card-1 .register-h2 {
+  color: #00A884;
+}
+
+.register-inner-card-1 p {
+  padding: 5px;
+  font-size: 18px;
+}
+
+.register-inner-card-2 img {
+  height: 400px;
+  width: 500px;
+}
+
+.register-user-right {
+  background-color: #FFFFFF;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0px 0px 15px 5px rgb(205, 204, 204);
+  border-radius: 10px;
+}
+
+.register-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-user {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.register-user-heading img {
+  width: 160px;
+  height: 80px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.register-user-heading span {
+  color: #00A884;
+}
+
+.register-user-heading p {
+  margin: 10px 0px 15px;
+}
+
+.register-user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: start;
+}
+
+.register-user-login-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: start;
+  margin-top: 18px;
+}
+
+.register-user-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 17px;
+  margin-bottom: 25px;
+}
+
+.register-input-group {
+  width: 100%;
+}
+
+.register-input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.register-input-box {
+  display: flex;
+  align-items: center;
+  background: #F8FAFC;
+  border-radius: 10px;
+  border: 1px solid #CBD5E1;
+  padding: 0 15px;
+  transition: .3s;
+}
+
+.register-input-box span {
+  color: #94A3B8;
+  font-size: 23px;
+}
+
+.register-input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  height: 48px;
+  padding: 0 12px;
+  font-size: 17px;
+  color: #1E293B;
+  background-color: transparent;
+}
+
+.register-input-box input::placeholder {
+  color: #94A3B8;
+}
+
+.register-input-box:focus-within {
+  border: 2px solid #00A884;
+  box-shadow: 0 0 0 3px rgba(0, 168, 132, .15);
+}
+
+.register-error {
+  display: block;
+  margin-top: 3px;
+  color: #EF4444;
+  font-size: 13px;
+}
+
+.register-user-signup button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 80%;
+  font-size: 19px;
+  padding: 15px;
+  border: none;
+  background-color: #00A884;
+  color: white;
+  border-radius: 15px;
+}
+
+.register-user-signup button:hover {
+  background-color: #00956F;
+}
+
+.register-user-signup span {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#register-link {
+  color: #00A884;
+}
+
+.register-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+  animation: register-spin 0.6s linear infinite;
+}
+
+.register-form-error {
+  width: 80%;
+  padding: 10px 12px;
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-left: 4px solid #EF4444;
+  border-radius: 6px;
+  color: #DC2626;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+@keyframes register-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@media (max-width: 1024px) {
+
+  .register-user-main {
+    flex-direction: column;
+    gap: 40px;
+    padding: 100px 20px 40px;
+  }
+
+  .register-user-card {
+    width: 90%;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .register-inner-card-2 img {
+    width: 400px;
+    height: auto;
+  }
+
+  .register-user-right {
+    width: 90%;
+    box-shadow: none;
+  }
+
+  .register-user {
+    width: 90%;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .register-user-main {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 90px 15px 30px;
+    gap: 35px;
+  }
+
+  .register-user-card {
+    width: 100%;
+    gap: 25px;
+    text-align: center;
+  }
+
+  .register-inner-card-1 h1 {
+    font-size: 34px;
+  }
+
+  .register-inner-card-1 p {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  .register-inner-card-2 img {
+    width: 350px;
+    height: 250px;
+  }
+
+  .register-user-right {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .register-form {
+    width: 100%;
+  }
+
+  .register-user {
+    width: 90%;
+  }
+
+  .register-user-heading img {
+    width: 140px;
+  }
+
+  .register-user-heading h2 {
+    font-size: 24px;
+  }
+
+  .register-user-heading p {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .register-input-box input {
+    font-size: 15px;
+    height: 45px;
+  }
+
+  .register-input-box span {
+    font-size: 20px;
+  }
+
+  .register-user-signup button {
+    width: 80%;
+    font-size: 17px;
+    padding: 13px;
+  }
+
+  .register-user-signup span {
+    text-align: center;
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .register-user-main {
+    padding: 80px 10px 20px;
+  }
+
+  .register-user-card {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .register-inner-card-1 h1 {
+    font-size: 28px;
+  }
+
+  .register-inner-card-1 p {
+    font-size: 16px;
+    padding: 0;
+  }
+
+  .register-inner-card-2 img {
+    width: 300px;
+    height: 200px;
+  }
+
+  .register-user-right {
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .register-user {
+    width: 92%;
+  }
+
+  .register-user-heading img {
+    width: 120px;
+  }
+
+  .register-user-heading h2 {
+    font-size: 22px;
+  }
+
+  .register-input-group label {
+    font-size: 14px;
+  }
+
+  .register-input-box {
+    padding: 0 10px;
+  }
+
+  .register-input-box input {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .register-input-box span {
+    font-size: 18px;
+  }
+
+  .register-user-signup button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .register-user-signup span {
+    font-size: 14px;
+  }
+
+}

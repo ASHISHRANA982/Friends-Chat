@@ -1,0 +1,17 @@
+.logout-btn{
+   border:none;
+   background-color:transparent;
+   font-size:16px;
+   color: white;
+}
+.profile-logout-btn {
+   width: 200px;
+   height: 40px;
+   border: none;
+   font-size: 14px;
+   margin-bottom: 5px;
+   background: rgba(239, 18, 18, 0.404);
+   border-radius: 5px;
+   margin-bottom: 5px;
+ }
+

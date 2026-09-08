@@ -1,0 +1,472 @@
+
+#about-mainWrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-hero {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    gap: 2vh;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding-top: 7%;
+}
+
+.about-hero-top {
+    width: 100%;
+    height: 43%;
+    display: flex;
+    gap: 7%;
+    justify-content: center;
+    align-items: start;
+}
+
+.about-left-text {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+}
+
+.about-hero-top > img {
+    width: 30%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.about-hero-mid {
+    width: 100%;
+    height: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+}
+
+.about-hero-bottom {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+}
+
+.about-left-text > hr {
+    margin-top: 20px;
+    width: 10%;
+    border: 2px solid #138D72;
+}
+
+#about-span {
+    color: #138D72;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#about-friend-chat-qs {
+    color: #138D72;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#about-text-qs {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px 20px;
+}
+
+#about-heading {
+    font-weight: bold;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#about-desc-text {
+    color: #797C80;
+    padding-top: 20px;
+    font-size: 16px;
+    line-height: 29px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.about-dot {
+    color: #138D72;
+    font-size: 45px;
+}
+
+#about-hr2 {
+    height: 0.7vh;
+    width: 5%;
+    border: none;
+    background-image: linear-gradient(to right, white, #138D72);
+}
+
+#about-hr3 {
+    height: 0.7vh;
+    width: 5%;
+    border: none;
+    background-image: linear-gradient(to left, white, #138D72);
+}
+
+.about-card {
+    width: 16%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 3vh;
+    background-color: #f4f7f8;
+    padding: 1%;
+    margin-top: 30px;
+}
+
+.about-card > img {
+    width: 130px;
+    height: 110px;
+    object-fit: contain;
+}
+
+.about-card-head {
+    color: #138D72;
+    font-size: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.about-card-desc {
+    color: #797C80;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15.5px;
+    line-height: 23px;
+    text-align: center;
+}
+
+.about-footer {
+    width: 80%;
+    height: 12vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+    background-color: #EBFDF9;
+    border-radius: 20px;
+    margin-top: 20px ;
+    margin-bottom: 20px;
+}
+
+.about-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.about-foot-msg-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #06413F;
+}
+
+.about-foot-msg-logo > img {
+    width: 30px;
+    height: 30px;
+}
+
+.about-foot-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+
+#about-fp1 {
+    font-weight: bold;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#about-fp2 {
+    color: #797C80;
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.about-footer > button {
+    color: white;
+    width: 160px;
+    height: 5vh;
+    font-size: medium;
+    background-color: #138D72;
+    border: none;
+    border-radius: 10px;
+}
+
+#about-greet-message {
+    font-size: 200px;
+    text-align: center;
+}
+
+
+
+@media (max-width:1024px){
+
+    .about-hero{
+        padding-top:100px;
+    }
+
+    .about-hero-top{
+        gap:40px;
+        padding:0 30px;
+    }
+
+    .about-left-text{
+        width:55%;
+    }
+
+    .about-hero-top>img{
+        width:35%;
+    }
+
+    #about-heading{
+        font-size:40px;
+    }
+
+    #about-span{
+        font-size:40px;
+    }
+
+    #about-text-qs,
+    #about-friend-chat-qs{
+        font-size:24px;
+    }
+
+    .about-hero-bottom{
+        flex-wrap:wrap;
+        height:auto;
+        gap:25px;
+        padding:20px;
+    }
+
+    .about-card{
+        width:40%;
+        min-height:320px;
+    }
+
+    .about-footer{
+        width:90%;
+    }
+
+    #about-greet-message{
+        font-size:120px;
+    }
+}
+
+
+
+@media (max-width:768px){
+
+    #about-mainWrapper{
+        gap:40px;
+    }
+
+    .about-hero{
+        padding-top:90px;
+    }
+
+    .about-hero-top{
+        flex-direction:column-reverse;
+        align-items:center;
+        gap:30px;
+        padding:0 20px;
+    }
+
+    .about-left-text{
+        width:100%;
+        align-items:center;
+        text-align:center;
+    }
+
+    .about-left-text hr{
+        width:80px;
+    }
+
+    .about-hero-top>img{
+        width:70%;
+        max-width:320px;
+    }
+
+    #about-heading{
+        font-size:34px;
+    }
+
+    #about-span{
+        font-size:34px;
+    }
+
+    #about-text-qs,
+    #about-friend-chat-qs{
+        font-size:22px;
+        margin:0;
+    }
+
+    #about-desc-text{
+        font-size:15px;
+        line-height:28px;
+    }
+
+    .about-hero-mid{
+        flex-wrap:wrap;
+        gap:8px;
+        padding:0 15px;
+    }
+
+    #about-hr2,
+    #about-hr3{
+        width:50px;
+    }
+
+    .about-hero-bottom{
+        flex-direction:column;
+        height:auto;
+        gap:25px;
+        padding:20px;
+    }
+
+    .about-card{
+        width:100%;
+        max-width:400px;
+        min-height:auto;
+        padding:25px;
+        margin-top:0;
+    }
+
+    .about-card img{
+        width:110px;
+        height:100px;
+    }
+
+    .about-card-head{
+        font-size:22px;
+    }
+
+    .about-card-desc{
+        font-size:15px;
+    }
+
+    .about-footer{
+        width:95%;
+        height:auto;
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .about-footer-left{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .about-footer button{
+        width:100%;
+        height:48px;
+    }
+
+    #about-greet-message{
+        font-size:80px;
+    }
+}
+
+
+@media (max-width:480px){
+
+    .about-hero{
+        padding-top:80px;
+    }
+
+    .about-hero-top>img{
+        width:90%;
+    }
+
+    #about-heading{
+        font-size:28px;
+    }
+
+    #about-span{
+        font-size:28px;
+    }
+
+    #about-text-qs,
+    #about-friend-chat-qs{
+        font-size:18px;
+    }
+
+    #about-desc-text{
+        font-size:14px;
+        line-height:24px;
+    }
+
+    .about-card{
+        padding:20px 15px;
+    }
+
+    .about-card img{
+        width:90px;
+        height:90px;
+    }
+
+    .about-card-head{
+        font-size:20px;
+    }
+
+    .about-card-desc{
+        font-size:14px;
+        line-height:22px;
+    }
+
+    .about-foot-msg-logo{
+        width:50px;
+        height:50px;
+    }
+
+    .about-foot-msg-logo img{
+        width:25px;
+        height:25px;
+    }
+
+    #about-fp1{
+        font-size:16px;
+    }
+
+    #about-fp2{
+        font-size:14px;
+    }
+
+    .about-footer button{
+        font-size:15px;
+    }
+
+    #about-greet-message{
+        font-size:55px;
+    }
+}
+

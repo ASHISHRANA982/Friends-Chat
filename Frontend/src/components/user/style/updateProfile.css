@@ -1,0 +1,470 @@
+.update-profile-main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #071A21;
+  padding: 100px;
+  color: black;
+}
+
+.update-sub-update {
+  width: 600px;
+  min-height: 400px;
+  background-color: #0D242D;
+  padding: 30px;
+  box-shadow: 0px 0px 5px 0px #1C3B46;
+}
+
+.update-header-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 80px;
+}
+
+.update-header-sub-card h2 {
+  color: #F8FAFC;
+}
+
+.update-header-sub-card p {
+  font-size: 12px;
+  color: #A8B6C0;
+  padding-top: 5px;
+}
+
+.update-header-card .update-back-btn {
+  width: 20%;
+  background-color: #162F3A;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  color: #F8FAFC;
+}
+
+.update-back-btn span {
+  padding-right: 3px;
+}
+.update-back-btn:hover{
+  color: #00956F;
+}
+
+.update-main-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.update-input-card {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-input-card label {
+  color: #F8FAFC;
+  padding-bottom: 5px;
+  font-size: 15px;
+}
+
+.update-input-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  border: 1px solid #1D414C;
+  background-color: #122D37;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.update-input-box:hover {
+  box-shadow: 0px 0px 5px 0px #00BFA5;
+  transform: translateY(-2px);
+}
+
+.update-input-card input {
+  width: 100%;
+  outline: none;
+  padding: 10px;
+  color: #F8FAFC;
+  font-size: 17px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.update-input-box span {
+  color: #00BFA5;
+}
+
+.update-button-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.update-card-btn-1 {
+  border: none;
+  background-color: #162F3A;
+  padding: 14px;
+  color: #F8FAFC;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 33%;
+}
+
+.update-card-btn-2 {
+  border: none;
+  background-color: #00BFA5;
+  padding: 14px;
+  color: #F8FAFC;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 45%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.update-card-btn-2:hover {
+  background-color: #00A88F;
+}
+
+.update-card-btn-2:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.update-last-p-line {
+  text-align: center;
+  color: #F8FAFC;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.update-profile-img-card img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #00A88F;
+}
+
+.update-image-update {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.update-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 45px;
+  padding: 10px 20px;
+  border: 1px solid #00A884;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 168, 132, 0.25);
+}
+
+.update-upload-btn:hover {
+  background-color: #00956F;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 168, 132, 0.35);
+}
+
+.update-upload-btn:active {
+  transform: translateY(0);
+}
+
+.update-spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: update-spin 0.7s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes update-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .update-profile-main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 15px 30px;
+    align-items: flex-start;
+  }
+
+  .update-sub-update {
+    width: 100%;
+    min-height: auto;
+    padding: 20px 15px;
+  }
+
+  /* Header */
+
+  .update-header-card {
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+  }
+
+  .update-header-card .update-back-btn {
+    width: auto;
+    min-width: 80px;
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+
+  .update-header-sub-card {
+    flex: 1;
+  }
+
+  .update-header-sub-card h2 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .update-header-sub-card p {
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+
+  /* Main Form */
+
+  .update-main-card {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .update-input-card {
+    width: 95%;
+  }
+
+  .update-input-card label {
+    font-size: 14px;
+  }
+
+  .update-input-box {
+    padding: 4px;
+    border-radius: 8px;
+  }
+
+  .update-input-card input {
+    font-size: 15px;
+    padding: 9px;
+  }
+
+
+  /* Buttons */
+
+  .update-button-card {
+    width: 95%;
+    margin: 15px auto 0;
+    gap: 10px;
+  }
+
+  .update-card-btn-1,
+  .update-card-btn-2 {
+    width: 50%;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+
+  /* Profile Image */
+
+  .update-profile-img-card img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .update-upload-btn {
+    width: 100px;
+    height: 40px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+
+  /* Footer Text */
+
+  .update-last-p-line {
+    font-size: 13px;
+    margin-top: 15px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .update-profile-main {
+    padding: 70px 10px 20px;
+  }
+
+  .update-sub-update {
+    padding: 18px 10px;
+  }
+
+
+  /* Header */
+
+  .update-header-card {
+    gap: 10px;
+  }
+
+  .update-header-card .update-back-btn {
+    min-width: 65px;
+    padding: 8px 9px;
+    font-size: 13px;
+  }
+
+  .update-header-sub-card h2 {
+    font-size: 17px;
+  }
+
+  .update-header-sub-card p {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+
+  /* Inputs */
+
+  .update-input-card {
+    width: 100%;
+  }
+
+  .update-input-card label {
+    font-size: 13px;
+  }
+
+  .update-input-box {
+    padding: 3px;
+    margin-bottom: 8px;
+  }
+
+  .update-input-card input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+
+  /* Buttons */
+
+  .update-button-card {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .update-card-btn-1,
+  .update-card-btn-2 {
+    width: 50%;
+    padding: 11px 5px;
+    font-size: 13px;
+  }
+
+
+  /* Image */
+
+  .update-profile-img-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .update-upload-btn {
+    width: 85px;
+    height: 38px;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+
+
+  /* Footer */
+
+  .update-last-p-line {
+    font-size: 11px;
+  }
+
+  .update-spinner {
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+  }
+
+}
+
+
+@media (max-width: 360px) {
+
+  .update-profile-main {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .update-sub-update {
+    padding: 15px 8px;
+  }
+
+  .update-header-card {
+    gap: 7px;
+  }
+
+  .update-header-card .update-back-btn {
+    min-width: 55px;
+    padding: 7px;
+    font-size: 12px;
+  }
+
+  .update-header-sub-card h2 {
+    font-size: 15px;
+  }
+
+  .update-header-sub-card p {
+    font-size: 9px;
+  }
+
+  .update-input-card input {
+    font-size: 13px;
+  }
+
+  .update-upload-btn {
+    width: 75px;
+    font-size: 12px;
+  }
+
+  .update-card-btn-1,
+  .update-card-btn-2 {
+    font-size: 12px;
+  }
+
+}
