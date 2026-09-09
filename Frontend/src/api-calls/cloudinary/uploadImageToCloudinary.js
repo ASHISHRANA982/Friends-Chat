@@ -4,7 +4,8 @@ export const uploadImageToCloudinary = async (file) => {
   formData.append("file", file);
   formData.append("upload_preset", "chart_image_upload");
 
-  const cloudName = import.meta.env.CLOUDINARY_NAME;
+  const cloudName = import.meta.env.VITE_CLOUDINARY_NAME;
+
 
   const response = await fetch(
     `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,

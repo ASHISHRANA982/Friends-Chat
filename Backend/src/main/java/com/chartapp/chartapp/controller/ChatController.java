@@ -98,10 +98,6 @@ public void sendMessage( @Payload PrivateMessage privateMessage,Principal princi
 
 
 
-    simpUserRegistry.getUsers().forEach(user -> {
-        System.out.println(user.getName());
-    });
-
     messagingTemplate.convertAndSendToUser(
             receiverLogin.getUsername(),
             "/queue/message",
@@ -113,7 +109,7 @@ public void sendMessage( @Payload PrivateMessage privateMessage,Principal princi
             privateMessage
     );
     
-    System.out.println("Message sent");
+
 }
 
 @MessageExceptionHandler
