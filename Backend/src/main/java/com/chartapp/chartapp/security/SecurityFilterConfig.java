@@ -50,7 +50,8 @@ public class SecurityFilterConfig {
                 .cors(Customizer.withDefaults())
         .authorizeHttpRequests(http->
             http.requestMatchers("/user/register/createUser","/user/register/loginUser",
-                            "/user/register/forgetPassword","/chat/**","/contact/saveContact"
+                            "/chat/**","/contact/saveContact",
+                            "/api/health"
                             )
                     .permitAll()
                     .anyRequest()
