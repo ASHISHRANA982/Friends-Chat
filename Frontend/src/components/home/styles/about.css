@@ -334,7 +334,6 @@
     }
 
     .about-hero-mid{
-        flex-wrap:wrap;
         gap:8px;
         padding:0 15px;
     }

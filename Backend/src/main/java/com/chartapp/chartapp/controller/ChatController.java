@@ -19,6 +19,7 @@ import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Controller
 public class ChatController {
@@ -80,7 +81,7 @@ public void sendMessage( @Payload PrivateMessage privateMessage,Principal princi
 
     }
 
-    LocalDateTime now = LocalDateTime.now();
+    LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Kolkata"));
 
 
     Message message = new Message();

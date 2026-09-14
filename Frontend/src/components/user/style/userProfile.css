@@ -1,6 +1,6 @@
  .main-profile {
    width: 100%;
-   height: calc(100vh - 60px);
+   height: calc(100dvh - 60px);
    display: grid;
    grid-template-columns: 280px 1fr 220px;
    gap: 10px;
@@ -8,7 +8,8 @@
    padding: 10px 12px 12px;
    margin-top: 60px;
    box-sizing: border-box;
-
+  min-height: 0;
+  overflow: hidden;
  }
 
  .sub-profile-1 {
@@ -28,6 +29,7 @@
    flex-direction: column;
    overflow: hidden;
    min-height: 0;
+   height: 100%;
    background: #192329;
    border: 1px solid #7b858b;
    border-radius: 8px;
@@ -305,88 +307,149 @@
    }
  }
 
- @media (max-width: 768px) {
+ 
+ @media (max-width: 768px)  {
+ .main-profile {
+    position: fixed;
+    top: 70px; 
+    left: 0;
+    width: 100%;
+    height: calc(100dvh - 60px); 
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    margin-top: 0;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+  }
 
-   .main-profile {
-     grid-template-columns: 1fr;
-   }
+  .sub-profile-2 {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
 
-   .sub-profile-2 {
-     width: 100%;
-     height: 550px;
-     margin-top: 20px;
-   }
+  .main-profile.chat-open {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
 
-   .sub-profile-1 {
-     position: fixed;
-     left: -100%;
-     top: 90px;
-     width: 280px;
-     height: 600px;
-     z-index: 1000;
-     transition: left 0.3s ease;
-   }
+  
+  .main-profile.chat-open .sub-profile-2 {
+    height: 100%;
+    border-radius: 0;
+    border: none;
+  }
 
-   .sub-profile-1.mobile-open {
-     left: 0;
-   }
+  .sub-profile-1 {
+    position: fixed;
+    left: -100%;
+    top: 78px;
+    width: 280px;
+    height: 600px;
+    z-index: 1000;
+    transition: left 0.3s ease;
+  }
 
-   .close-profile {
-     display: flex;
-     justify-content: flex-end;
-     width: 100%;
-     color: white;
-     align-items: center;
-     padding: 15px;
-     cursor: pointer;
+  .sub-profile-1.mobile-open {
+    left: 0;
+  }
+  .close-profile {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    color: white;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+  }
 
-   }
+  .close-profile:hover {
+    color: #25D366;
+  }
 
-   .close-profile:hover {
-     color: #25D366;
-   }
+  .mobile-info-panel {
+    display: block;
+    position: fixed;
+    top: 78px;
+    right: -100%;
+    width: 300px;
+    height: 620px;
+    background: #111B21;
+    overflow-y: auto;
+    z-index: 99999;
+    transition: right 0.3s ease;
+    padding: 10px;
+  }
 
-   .mobile-info-panel {
-     display: block;
-     position: fixed;
-     top: 80px;
-     right: -100%;
-     width: 300px;
-     height: 600px;
-     background: #111B21;
-     overflow-y: auto;
-     z-index: 9999;
-     transition: right .3s ease;
-     padding: 10px;
-   }
+  .mobile-info-panel.mobile-info-open {
+    right: 0;
+  }
 
-   .mobile-info-panel.mobile-info-open {
-     right: 0;
-   }
+  .mobile-info-close {
+    position: sticky;
+    top: 0;
+    right: 5px;
+    float: right;
+    border: none;
+    background: transparent;
+    color: #25D366;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
 
-   .mobile-info-close {
-     position: sticky;
-     top: 0;
-     float: right;
-     border: none;
-     background: transparent;
-     color: white;
-     font-size: 24px;
-     cursor: pointer;
-     margin-bottom: 10px;
-   }
-
-   .sub-profile-3,
-   .sub-profile-4 {
-     display: none;
-   }
-
-   .mobile-info-panel .sub-profile-3,
-   .mobile-info-panel .sub-profile-4 {
-     display: block;
-     width: 100%;
-     margin-bottom: 12px;
-   }
+  .sub-profile-3,
+  .sub-profile-4 {
+    display: none;
+  }
 
 
- }
+  .mobile-info-panel .sub-profile-3,
+.mobile-info-panel .sub-profile-4 {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .sub-content-card {
+    transition: none;
+  }
+
+  .sub-content-card:hover {
+    transform: none;
+  }
+
+  .main-profile.chat-open .sub-profile-1,
+  .main-profile.chat-open .sub-profile-3,
+  .main-profile.chat-open .sub-profile-4,
+  .main-profile.chat-open .mobile-info-panel {
+    display: none;
+  }
+
+  .main-profile.chat-open .chat-view {
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+}
+
+
+
+
+

@@ -15,16 +15,36 @@ import { AccessDenie } from './components/common/AccessDenie'
 import { Toaster, toast } from 'sonner'
 import './App.css';
 import { UpdateUserProfile } from './components/user/UpdateUserProfile'
+import { useChat } from './components/chat/ChatContext'
+import { useState,useEffect } from 'react'
+
+
 function App() {
 
   const { token } = useSelector((state) => state.authSlice);
+  const { selectedContact } = useChat();
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
 
   return (
     <>
 
-      <Navbar />
-
+      {
+        !(isMobile && selectedContact) && <Navbar />
+      }
 
       <Routes>
 
@@ -32,8 +52,8 @@ function App() {
 
         <Route path="/about" element={<About />} />
 
-          <Route path="/contact" element={<Contact />} />
-        
+        <Route path="/contact" element={<Contact />} />
+
         <Route path="/register" element={<UserRegistration />} />
         <Route path='/login' element={<UserLogin />} />
         <Route path='/accessDenied' element={<AccessDenie />} />
@@ -44,7 +64,7 @@ function App() {
         <Route path='/request' element={token ? <UserRequest /> : <Navigate to='/accessDenied' replace />} />
         <Route path='/friend' element={token ? <UserFriends /> : <Navigate to='/accessDenied' replace />} />
         <Route path='/chat' element={token ? <ChatView /> : <Navigate to='/accessDenied' replace />} />
-         <Route path='/updateProfile' element={token ? <UpdateUserProfile/> : <Navigate to='/accessDenied' replace />} />
+        <Route path='/updateProfile' element={token ? <UpdateUserProfile /> : <Navigate to='/accessDenied' replace />} />
 
 
 
@@ -56,7 +76,7 @@ function App() {
 
       <ToastContainer />
       <Toaster position='top-center'
-         toastOptions={{
+        toastOptions={{
           classNames: {
             success: "toast-success",
             error: "toast-error",

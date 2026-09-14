@@ -9,10 +9,12 @@
 .content-area {
   flex: 1;
   min-height: 0;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+}
+.chat-content-area{
+  overflow: hidden;
 }
 
 .nav-class {
@@ -383,6 +385,7 @@
 @media (max-width: 768px) {
   .popup {
     width: 90%;
+    top: 70px;
   }
 
   .mobile-icon-div {
@@ -414,23 +417,18 @@
     display: none;
   }
 
-  /* Show popup when open */
+
   .nav-btn.sub-active {
     display: flex;
     flex-direction: column;
-
     position: absolute;
-    top: 55px;
-    right: 10px;
-
+    top: 13px;
+    right: 50px;
     width: 220px;
-
     background: #192329;
     border: 1px solid #2A3942;
     border-radius: 8px;
-
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-
     padding: 10px;
     gap: 8px;
     z-index: 9999;
@@ -460,13 +458,13 @@
 
   .close-nav {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
     width: 100%;
     color: white;
     align-items: center;
     /* padding: 10px; */
     cursor: pointer;
-
+     color: #0bca71;
   }
 
   .close-nav:hover {

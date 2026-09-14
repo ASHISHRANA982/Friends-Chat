@@ -6,6 +6,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { IoCloseOutline, IoInformationCircleOutline } from "react-icons/io5";
 import ChatView from '../chat/ChatView';
+import { useChat } from '../chat/ChatContext';
 
 const MainContent = lazy(() => import("./MainContent"))
 const UserRequest = lazy(() => import('./UserRequest'));
@@ -16,9 +17,11 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
   const [activeTab, setActiveTab] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const [open, setOpen] = useState(false);
-  const [selectedContact, setSelectedContact] = useState(null)
+  // const [selectedContact, setSelectedContact] = useState(null)
   const [friendsLoading, setFriendsLoading] = useState(false);
   const [searchData,setSearchData]=useState("");
+
+  const {selectedContact,setSelectedContact}=useChat();
   
 
   useEffect(()=>{
@@ -127,7 +130,7 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
         !activeTab && !selectedContact && (
           <div className="content-area">
             <Suspense fallback={<p></p>}>
-            <MainContent setSelectedContact={setSelectedContact} 
+            <MainContent
             searchData={searchData}/>
             </Suspense>
           </div>
@@ -136,12 +139,11 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
 
       {
         !activeTab && selectedContact && (
-          <div className="content-area">
+          <div className="content-area chat-content-area">
             <Suspense fallback={<p></p>}>
             <ChatView 
               key={selectedContact?.id}
-              selectedContact={selectedContact}
-              setSelectedContact={setSelectedContact} />
+               />
               </Suspense>
           </div>
         )

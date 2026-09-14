@@ -10,8 +10,9 @@ import { MdBlock, MdDeleteForever, MdDeleteOutline } from "react-icons/md";
 import { updateAccountBlockConnected, clearBlockAndConnected } from '../../api-calls/user/friendsSlice';
 import { toastStyles } from "../../components/common/toastStyles";
 import defaultProfileImage from '../../assets/defaultProfileImage.png'
+import { useChat } from './ChatContext';
 
-export default function ChatView({ selectedContact, setSelectedContact }) {
+export default function ChatView() {
 
 
   const [text, setText] = useState("");
@@ -21,7 +22,12 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
   const { loading, conversations, error } = useSelector((state) => state.messageSlice);
   const { blockAndConnectedLoading, blockAndconnectedStatus, blockAndconnectedStatusError } = useSelector((state) => state.friendsSlice);
 
+  const {selectedContact,setSelectedContact}=useChat();
+
   const messages = conversations || [];
+  const inputRef = useRef(null); 
+  const chatContainerRef = useRef(null);
+
 
 
   const [showPopUp, setShowPopUp] = useState(false);
@@ -88,6 +94,10 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
     );
 
     setText("");
+    if (inputRef.current) {
+    inputRef.current.style.height = "auto"; 
+    inputRef.current.focus();               
+  }
 
   };
 
@@ -188,6 +198,48 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
   }, [blockAndconnectedStatusError, dispatch])
 
 
+
+  useEffect(() => {
+   
+    if (!window.visualViewport || window.innerWidth > 768) return;
+
+    const handleVisualViewportChange = () => {
+      if (chatContainerRef.current) {
+        chatContainerRef.current.style.height = `${window.visualViewport.height}px`;
+        
+        
+        chatContainerRef.current.style.transform = `translateY(${window.visualViewport.offsetTop}px)`;
+        
+       
+        const chatBody = chatContainerRef.current.querySelector('.chat-body');
+        if (chatBody) {
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+      }
+    };
+
+   
+    const preventWindowBounce = (e) => {
+      
+      if (!e.target.closest('.chat-body')) {
+        e.preventDefault();
+      }
+    };
+
+    window.visualViewport.addEventListener('resize', handleVisualViewportChange);
+    window.visualViewport.addEventListener('scroll', handleVisualViewportChange);
+    document.body.addEventListener('touchmove', preventWindowBounce, { passive: false });
+
+  
+    handleVisualViewportChange();
+
+    return () => {
+      window.visualViewport.removeEventListener('resize', handleVisualViewportChange);
+      window.visualViewport.removeEventListener('scroll', handleVisualViewportChange);
+      document.body.removeEventListener('touchmove', preventWindowBounce);
+    };
+  }, []);
+
   return (
 
     <>
@@ -201,7 +253,7 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
         )
       }
 
-      <div className="chat-container">
+      <div ref={chatContainerRef} className="chat-container">
 
         <header className='chat-header'>
 
@@ -322,6 +374,7 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
           <div className="chat-input-div">
 
             <textarea
+              ref={inputRef}
               onFocus={handleFocus}
               onKeyDown={handleKeyDown}
               className="chat-input"
@@ -352,3 +405,6 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
 
   )
 }
+
+
+
