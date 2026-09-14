@@ -25,6 +25,9 @@ export default function ChatView() {
   const {selectedContact,setSelectedContact}=useChat();
 
   const messages = conversations || [];
+  const inputRef = useRef(null); 
+  const chatContainerRef = useRef(null);
+
 
 
   const [showPopUp, setShowPopUp] = useState(false);
@@ -91,6 +94,10 @@ export default function ChatView() {
     );
 
     setText("");
+    if (inputRef.current) {
+    inputRef.current.style.height = "auto"; 
+    inputRef.current.focus();               
+  }
 
   };
 
@@ -191,6 +198,48 @@ export default function ChatView() {
   }, [blockAndconnectedStatusError, dispatch])
 
 
+
+  useEffect(() => {
+   
+    if (!window.visualViewport || window.innerWidth > 768) return;
+
+    const handleVisualViewportChange = () => {
+      if (chatContainerRef.current) {
+        chatContainerRef.current.style.height = `${window.visualViewport.height}px`;
+        
+        
+        chatContainerRef.current.style.transform = `translateY(${window.visualViewport.offsetTop}px)`;
+        
+       
+        const chatBody = chatContainerRef.current.querySelector('.chat-body');
+        if (chatBody) {
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+      }
+    };
+
+   
+    const preventWindowBounce = (e) => {
+      
+      if (!e.target.closest('.chat-body')) {
+        e.preventDefault();
+      }
+    };
+
+    window.visualViewport.addEventListener('resize', handleVisualViewportChange);
+    window.visualViewport.addEventListener('scroll', handleVisualViewportChange);
+    document.body.addEventListener('touchmove', preventWindowBounce, { passive: false });
+
+  
+    handleVisualViewportChange();
+
+    return () => {
+      window.visualViewport.removeEventListener('resize', handleVisualViewportChange);
+      window.visualViewport.removeEventListener('scroll', handleVisualViewportChange);
+      document.body.removeEventListener('touchmove', preventWindowBounce);
+    };
+  }, []);
+
   return (
 
     <>
@@ -204,7 +253,7 @@ export default function ChatView() {
         )
       }
 
-      <div className="chat-container">
+      <div ref={chatContainerRef} className="chat-container">
 
         <header className='chat-header'>
 
@@ -325,6 +374,7 @@ export default function ChatView() {
           <div className="chat-input-div">
 
             <textarea
+              ref={inputRef}
               onFocus={handleFocus}
               onKeyDown={handleKeyDown}
               className="chat-input"
@@ -355,3 +405,6 @@ export default function ChatView() {
 
   )
 }
+
+
+

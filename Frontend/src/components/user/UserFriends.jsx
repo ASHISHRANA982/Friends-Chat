@@ -139,7 +139,7 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
 
       {
         !activeTab && selectedContact && (
-          <div className="content-area">
+          <div className="content-area chat-content-area">
             <Suspense fallback={<p></p>}>
             <ChatView 
               key={selectedContact?.id}

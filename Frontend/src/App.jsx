@@ -46,8 +46,6 @@ function App() {
         !(isMobile && selectedContact) && <Navbar />
       }
 
-      {/* <Navbar/> */}
-
       <Routes>
 
         <Route path="/" element={token ? <Navigate to="/profile" /> : <Home />} />
