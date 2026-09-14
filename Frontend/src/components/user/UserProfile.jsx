@@ -13,6 +13,7 @@ import { uploadImageToCloudinary } from '../../api-calls/cloudinary/uploadImageT
 import { logout } from "../../api-calls/auth/authSlice";
 import { toastStyles } from '../../components/common/toastStyles';
 import defaultProfileImage from '../../assets/defaultProfileImage.png'
+import { useChat } from '../chat/ChatContext';
 
 
 const UserFriends = lazy(() => import("./UserFriends"))
@@ -34,6 +35,8 @@ const UserProfile = () => {
   const [updateImageLoading, setUpdateImageLoading] = useState(false);
 
   const profileRequested = useRef(false);
+
+  const {selectedContact}=useChat();
 
 
   useEffect(() => {
@@ -167,7 +170,7 @@ const UserProfile = () => {
         )
       }
 
-      <div className='main-profile'>
+      <div  className={`main-profile ${selectedContact?"chat-open":""}`}>
 
 
         <div className={`sub-profile-1 ${showProfile ? "mobile-open" : ""}`}>
@@ -238,7 +241,7 @@ const UserProfile = () => {
         </div>
 
 
-        <div className='sub-profile-2'>
+        <div className={` sub-profile-2 ${selectedContact?"chat-view":""}`}>
 
           <Suspense fallback={
             <p>loading</p>

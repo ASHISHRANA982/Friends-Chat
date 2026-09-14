@@ -10,8 +10,9 @@ import { MdBlock, MdDeleteForever, MdDeleteOutline } from "react-icons/md";
 import { updateAccountBlockConnected, clearBlockAndConnected } from '../../api-calls/user/friendsSlice';
 import { toastStyles } from "../../components/common/toastStyles";
 import defaultProfileImage from '../../assets/defaultProfileImage.png'
+import { useChat } from './ChatContext';
 
-export default function ChatView({ selectedContact, setSelectedContact }) {
+export default function ChatView() {
 
 
   const [text, setText] = useState("");
@@ -20,6 +21,8 @@ export default function ChatView({ selectedContact, setSelectedContact }) {
   const { success } = useSelector((state) => state.profileSlice)
   const { loading, conversations, error } = useSelector((state) => state.messageSlice);
   const { blockAndConnectedLoading, blockAndconnectedStatus, blockAndconnectedStatusError } = useSelector((state) => state.friendsSlice);
+
+  const {selectedContact,setSelectedContact}=useChat();
 
   const messages = conversations || [];
 

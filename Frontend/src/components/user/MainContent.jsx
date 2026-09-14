@@ -5,11 +5,14 @@ import { getAcceptedFriends, clearAcceptedFriends } from '../../api-calls/user/f
 import { toast } from "sonner";
 import { toastStyles } from "../../components/common/toastStyles";
 import defaultProfileImage from '../../assets/defaultProfileImage.png'
+import { useChat } from '../chat/ChatContext';
 
-const MainContent = ({ setSelectedContact, searchData }) => {
+const MainContent = ({searchData }) => {
 
   const dispatcher = useDispatch();
   const { acceptedFriend, acceptedFriendStatus, acceptedFriendError } = useSelector((state) => state.friendsSlice);
+
+  const{setSelectedContact}=useChat();
 
 
 
