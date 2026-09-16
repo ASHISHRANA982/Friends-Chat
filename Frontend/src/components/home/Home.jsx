@@ -7,6 +7,7 @@ import { MdPerson2,MdSecurity } from "react-icons/md";
 import { IoArrowForward } from "react-icons/io5";
 import { BsChatDotsFill } from "react-icons/bs";
 import { FaUserFriends,FaGithub, FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
+import InstallApp from '../common/InstallApp';
 
 
 
@@ -15,7 +16,7 @@ const Home = () => {
   const navigate = useNavigate()
 
   return (
-    // <div>
+ 
       <div className='home-div'>
 
         <div className='main-home'>
@@ -24,6 +25,8 @@ const Home = () => {
             <p className='tag-line'>Connect. Chat. Stay Togethar.</p>
             <h1>Welcome to</h1>
             <h1 id='h1-c'>Friends Chart!</h1>
+
+            <InstallApp/>
 
             <div className='box1-home-div'>
               <p>Every friendship has a story. <br></br>

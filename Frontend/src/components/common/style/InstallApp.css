@@ -1,0 +1,131 @@
+.install-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.55);
+    }
+
+    .install-overlay.hidden {
+      display: none;
+    }
+
+    .install-popup {
+      position: relative;
+      width: 360px;
+      max-width: calc(100% - 40px);
+      padding: 28px 24px;
+      text-align: center;
+      background: #202c33;
+      color: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      animation: installPopup 0.25s ease-out;
+    }
+
+    @keyframes installPopup {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .install-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      color: #aebac1;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .install-close:hover {
+      color: white;
+    }
+
+    .install-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: #2a3942;
+      font-size: 30px;
+    }
+    .install-icon img{
+      width: 70px;
+      height: 70px;
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .install-popup h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .install-popup p {
+      max-width: 300px;
+      margin: 0 auto 24px;
+      color: #aebac1;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .install-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .install-actions button {
+      flex: 1;
+      height: 42px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .install-later {
+      border: 1px solid #3b4a54;
+      background: transparent;
+      color: #d1d7db;
+    }
+
+    .install-later:hover {
+      background: #2a3942;
+    }
+
+    .install-button {
+      border: none;
+      background: #00a884;
+      color: white;
+    }
+
+    .install-button:hover {
+      background: #06cf9c;
+    }
+
+    @media (max-width: 480px) {
+      .install-popup {
+        width: 320px;
+        padding: 25px 20px;
+      }
+      
+      .install-popup h2 {
+        font-size: 20px;
+      }
+    }
