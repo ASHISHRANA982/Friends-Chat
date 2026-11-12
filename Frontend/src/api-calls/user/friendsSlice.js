@@ -1,22 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../services/api";
-import Cookies from "js-cookie";
 
 
 export const addFriends = createAsyncThunk(
   "friends/addFriends",
   async (request, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
 
       const response = await api.post(
-        "/user/addFriends", request,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        "/user/addFriends", request
       );
+
       return response.data;
     }
     catch (error) {
@@ -35,15 +29,9 @@ export const addFriends = createAsyncThunk(
 export const friendPendingProfile = createAsyncThunk(
   "friends/friendsPendingProfile",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
 
-      const response = await api.get("/user/getPendingFriendRequest",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+      const response = await api.get("/user/getPendingFriendRequest"
       );
 
       return response.data;
@@ -63,16 +51,12 @@ export const friendPendingProfile = createAsyncThunk(
 export const friendInvitationProfile = createAsyncThunk(
   "friends/friendsInvitationProfile",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
+  
     try {
 
-      const response = await api.get("/user/getPendingFriendInvitation",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+      const response = await api.get("/user/getPendingFriendInvitation"
       );
+
       return response.data;
     }
     catch (error) {
@@ -91,16 +75,11 @@ export const friendInvitationProfile = createAsyncThunk(
 export const updateRequestStatus = createAsyncThunk(
   "friend/updateFriendRequest",
   async (request, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
       const response = await api.put(
-        "/user/acceptRequest", request,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        "/user/acceptRequest", request
       )
+   
       return response.data;
     }
     catch (error) {
@@ -119,14 +98,10 @@ export const updateRequestStatus = createAsyncThunk(
 export const getAcceptedFriends = createAsyncThunk(
   "friend/getAcceptedFriend",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
+   
     try {
       const response = await api.get(
-        "/user/getAcceptedFriends", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+        "/user/getAcceptedFriends"
       )
       return response.data;
     }
@@ -147,15 +122,10 @@ export const getAcceptedFriends = createAsyncThunk(
 export const updateAccountBlockConnected = createAsyncThunk(
   "friend/updateAccountBlockConnected",
   async (request, { rejectWithValue }) => {
-    const token = Cookies.get("token");
+
     try {
 
-      const res = await api.put("/message/updateRelationStatus", request,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+      const res = await api.put("/message/updateRelationStatus", request
       );
       return res.data;
 

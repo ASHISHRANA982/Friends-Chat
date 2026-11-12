@@ -1,6 +1,7 @@
 package com.chartapp.chartapp.security;
 
 import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +17,19 @@ public class GetSecurityId {
 
     public int SecurityIdChecker(HttpServletRequest request){
 
-        String header=request.getHeader("Authorization");
-        if(header==null || !header.startsWith("Bearer")){
-            throw new RuntimeException("Missing or invalid Authorization header");
+        Cookie[]cookies=request.getCookies();
+        String token=null;
+
+        if(cookies!=null)
+        {
+            for(Cookie cookie:cookies){
+                if("Refresh_Token".equals(cookie.getName())){
+                    token=cookie.getValue();
+                    break;
+                }
+            }
         }
 
-        String token=header.substring(7);
         Claims claims= jwtAuth.getId(token);
         return (Integer) claims.get("id");
     }

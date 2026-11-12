@@ -10,13 +10,21 @@ import com.chartapp.chartapp.repository.UserLogoutRepo;
 import com.chartapp.chartapp.security.JwtAuth;
 import com.chartapp.chartapp.service.UserLoginService;
 import com.chartapp.chartapp.service.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.WebUtils;
+
+import java.time.Duration;
 
 @RestController
 @RequestMapping("/user/register")
@@ -49,10 +57,22 @@ public class UserRegisterController {
     }
 
     @PostMapping("/loginUser")
-    public ResponseEntity<SuccessClass>LoginUser(@Valid @RequestBody UserLogin userLogin){
+    public ResponseEntity<SuccessClass>LoginUser(@Valid @RequestBody UserLogin userLogin, HttpServletResponse response){
         String token= userLoginService.LoginUser(userLogin,"USER");
+
+        ResponseCookie cookie=ResponseCookie
+                .from("Refresh_Token",token)
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .sameSite("None")
+                .maxAge(Duration.ofDays(4))
+                .build();
+
+        response.setHeader(HttpHeaders.SET_COOKIE,cookie.toString());
+
         return ResponseEntity.ok(
-                SuccessClass.success("User Login Successful",token)
+                SuccessClass.success("User Login Successful",null)
         );
     }
 
@@ -65,12 +85,23 @@ public class UserRegisterController {
 
     @PreAuthorize("hasRole('USER')")
     @PostMapping("/logoutUser")
-    public ResponseEntity<SuccessClass> logoutUser(
-            @RequestHeader("Authorization") String authHeader) {
+    public ResponseEntity<SuccessClass> logoutUser(HttpServletResponse response,HttpServletRequest request)
+    {
+        Cookie tokenCookie = WebUtils.getCookie(request, "Refresh_Token");
+        if (tokenCookie == null || tokenCookie.getValue().isBlank()) {
+            throw new BadCredentialsException("Token Not Found");
+        }
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        String token=tokenCookie.getValue();
 
-            String token = authHeader.substring(7);
+        ResponseCookie cookie=ResponseCookie
+                .from("Refresh_Token","")
+                .httpOnly(true)
+                .secure(true)
+                .path("/")
+                .sameSite("None")
+                .maxAge(0)
+                .build();
 
             UserLogout userLogout = new UserLogout(
                     token,
@@ -79,15 +110,15 @@ public class UserRegisterController {
 
             userLogoutRepo.save(userLogout);
 
-            SecurityContextHolder.clearContext();   // Add this
+            response.setHeader(HttpHeaders.SET_COOKIE,cookie.toString());
+
+            SecurityContextHolder.clearContext();
 
             return ResponseEntity.ok(
                     SuccessClass.success("User Logout Successful",null)
             );
         }
 
-        throw new BadCredentialsException("Token Not Found");
     }
 
 
-}

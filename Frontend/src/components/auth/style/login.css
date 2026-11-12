@@ -195,6 +195,17 @@
     padding-top: 10px;
   }
 
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
 
 @media (max-width:1100px) {
 

@@ -10,7 +10,6 @@ export const createUser = createAsyncThunk(
       return response.data;
     }
     catch (error) {
-        // return rejectWithValue(error.response?.data);
          return rejectWithValue(
         error.response?.data || {
           status: 500,
@@ -51,9 +50,9 @@ const createSilce = createSlice({
   },
   reducers: {
     clearMessage: (state) => {
-      state.loading = false,
-      state.success = null,
-      state.error = null
+      state.loading = false;
+      state.success = null;
+      state.error = null;
     }
 
   },

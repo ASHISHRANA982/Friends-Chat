@@ -8,18 +8,19 @@ import { BsChatDotsFill } from "react-icons/bs";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const { token } = useSelector((state) => state.authSlice);
+  const { isAuthenticated, authChecked } = useSelector((state) => state.authSlice);
+
+  const loggedIn = authChecked && isAuthenticated;
 
   function handleOpen(e) {
     setOpen(false);
   }
 
-
   return (
     <nav className="nav-div">
 
       <div className="nav-logo">
-        {token ? (
+        {loggedIn ? (
           <div className="nav-profile-logo">
             <div><BsChatDotsFill size={24} /></div>
             Friends Chat
@@ -43,27 +44,27 @@ const Navbar = () => {
 
         <ul className="nav-center">
 
-          <li onClick={handleOpen} className={token ? "profile-active" : "nav-link"}>
-            {token ? (
+          <li onClick={handleOpen} className={loggedIn ? "profile-active" : "nav-link"}>
+            {loggedIn ? (
               <Link to="/profile"><MdPerson2 /> Profile</Link>
             ) : (
               <Link to="/"><MdHome /> Home</Link>
             )}
           </li>
 
-          <li onClick={handleOpen} className={!token ? "nav-link" : "logout-link"}>
+          <li onClick={handleOpen} className={!loggedIn ? "nav-link" : "logout-link"}>
             <Link to="/contact">Contact</Link>
           </li>
 
 
-          <li onClick={handleOpen} className={!token ? "nav-link" : "logout-link"}>
+          <li onClick={handleOpen} className={!loggedIn ? "nav-link" : "logout-link"}>
             <Link to="/about">About</Link>
           </li>
 
         </ul>
 
     
-        {!token && (
+        {authChecked && !isAuthenticated && (
           <ul className="nav-right">
 
             <li className="login nav-link" onClick={handleOpen}>

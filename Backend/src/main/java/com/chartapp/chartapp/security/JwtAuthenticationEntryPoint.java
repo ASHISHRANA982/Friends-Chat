@@ -9,8 +9,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.io.IOException;
 
 @Component

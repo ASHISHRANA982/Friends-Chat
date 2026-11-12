@@ -322,7 +322,6 @@ export default function ChatView() {
                 : null;
 
             const isNewDate = currentDate !== previousDate;
-
             const isMe = msg.senderId === success?.data?.id;
 
             return (

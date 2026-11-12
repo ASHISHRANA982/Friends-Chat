@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.messaging.support.MessageBuilder;
 
+import java.util.Map;
+
 @Component
 public class JwtChannelInterceptor implements ChannelInterceptor {
 
@@ -46,14 +48,16 @@ public class JwtChannelInterceptor implements ChannelInterceptor {
         if (StompCommand.CONNECT.equals(accessor.getCommand())
                 || StompCommand.SEND.equals(accessor.getCommand())) {
 
-            String authHeader =
-                    accessor.getFirstNativeHeader("Authorization");
+            Map<String, Object> sessionAttributes = accessor.getSessionAttributes();
+            String token = sessionAttributes != null
+                    ? (String) sessionAttributes.get("Refresh_Token")
+                    : null;
 
-            if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            if (token == null || token.isBlank()) {
                 throw new MessageDeliveryException("Token Not Found");
             }
 
-            String token = authHeader.substring(7);
+
 
             try {
 
@@ -77,10 +81,6 @@ public class JwtChannelInterceptor implements ChannelInterceptor {
 
                 accessor.setUser(authentication);
 
-                System.out.println(
-                        "WebSocket User = " +
-                                accessor.getUser().getName()
-                );
 
             } catch (ExpiredJwtException e) {
 

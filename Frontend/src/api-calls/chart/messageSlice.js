@@ -1,20 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import api from "../../services/api"
-import Cookies from "js-cookie"
 
 export const getConversations = createAsyncThunk(    
   "message/getMessages",
   async (request, { rejectWithValue }) => {
 
-    const token = Cookies.get("token");
 
     try {
-      const res = await api.post(`/message/conversation`,request,
-        {
-          headers:{
-            Authorization:`Bearer ${token}`
-          }
-        }
+      const res = await api.post(`/message/conversation`,request
       )
       return res.data;
     }

@@ -8,6 +8,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Lazy;
@@ -20,6 +21,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Optional;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
@@ -61,23 +64,28 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         try {
 
-            String authHeader = request.getHeader("Authorization");
-
             String token = null;
             String username = null;
-            if (authHeader != null &&
-                    authHeader.startsWith("Bearer ")) {
 
-                token = authHeader.substring(7);
+            Cookie cookies[]=request.getCookies();
+            if(cookies!=null){
+                Optional<Cookie>jwtCookies= Arrays.stream(cookies)
+                        .filter(cookie -> "Refresh_Token".equals(cookie.getName()))
+                        .findFirst();
 
-                if (logoutRepo.existsByToken(token)) {
-                    throw new JwtException(
-                            "Session expired. Please login again"
-                    );
+                if(jwtCookies.isPresent()){
+                    token=jwtCookies.get().getValue();
                 }
-
-                username = jwtAuth.getUsernameFromToken(token);
             }
+
+            if(token!=null && !token.isBlank()){
+                if(logoutRepo.existsByToken(token)){
+                    throw new
+                            JwtException("Session expired. Please login again");
+                }
+                username=jwtAuth.getUsernameFromToken(token);
+            }
+
 
             if (username != null &&
                     SecurityContextHolder
@@ -92,10 +100,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                     UserLogin userLogin=userLoginRepo.findByUsername(username).orElseThrow(
                             ()->new UserNotFound("User Not Found Login Again")
                     );
-
-//                    System.out.println("Filter Calling");
-//                    System.out.println(userLogin.getUser().getStatus());
-//                    System.out.println(userLogin.getUser().getId());
 
 
                     if (!"Active".equalsIgnoreCase(userLogin.getUser().getStatus())) {

@@ -1,27 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import Cookies from "js-cookie";
+import { userProfile } from "../user/profileSlice";
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: {
-    token: Cookies.get("token") || null
-  }
-  , reducers: {
-    loginSuccess: (state, action) => {
-      state.token = action.payload;
-      Cookies.set("token", action.payload, { expires: 7,
-        path:'/'
-       });
-    },
-    logout: (state) => {
-      state.token = null;
-      Cookies.remove("token",{
-        path:'/'
-      });
-    }
-  }
 
-})
+  initialState: {
+    isAuthenticated: false,
+    authChecked: false        
+  },
+
+  reducers: {
+    loginSuccess: (state) => {
+      state.isAuthenticated = true;
+      state.authChecked = true;
+    },
+
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.authChecked = true;
+    }
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(userProfile.fulfilled, (state) => {
+        state.isAuthenticated = true;
+        state.authChecked = true;
+      })
+      .addCase(userProfile.rejected, (state) => {
+        state.isAuthenticated = false;
+        state.authChecked = true;
+      });
+  }
+});
 
 export const { loginSuccess, logout } = authSlice.actions;
 export default authSlice.reducer;

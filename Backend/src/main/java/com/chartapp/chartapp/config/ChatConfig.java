@@ -1,5 +1,6 @@
 package com.chartapp.chartapp.config;
 
+import com.chartapp.chartapp.security.CookieHandshakeInterceptor;
 import com.chartapp.chartapp.security.JwtChannelInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
@@ -13,9 +14,12 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class ChatConfig implements WebSocketMessageBrokerConfigurer {
 
     private final JwtChannelInterceptor jwtChannelInterceptor;
+    private final CookieHandshakeInterceptor cookieHandshakeInterceptor;
 
-    public ChatConfig(JwtChannelInterceptor jwtChannelInterceptor) {
+    public ChatConfig(JwtChannelInterceptor jwtChannelInterceptor,
+                      CookieHandshakeInterceptor cookieHandshakeInterceptor) {
         this.jwtChannelInterceptor = jwtChannelInterceptor;
+        this.cookieHandshakeInterceptor=cookieHandshakeInterceptor;
     }
 
     @Override
@@ -23,6 +27,7 @@ public class ChatConfig implements WebSocketMessageBrokerConfigurer {
 
         registry.addEndpoint("/chat")
                 .setAllowedOriginPatterns("*")
+                .addInterceptors(cookieHandshakeInterceptor)
                 .withSockJS();
     }
 

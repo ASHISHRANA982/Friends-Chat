@@ -1,13 +1,12 @@
 package com.chartapp.chartapp.service;
 
-import com.chartapp.chartapp.entity.User;
+
 import com.chartapp.chartapp.entity.UserLogin;
 import com.chartapp.chartapp.exception.InvalidCredentials;
 import com.chartapp.chartapp.exception.UserNotFound;
 import com.chartapp.chartapp.repository.UserLoginRepo;
 import com.chartapp.chartapp.repository.UserRepo;
 import com.chartapp.chartapp.security.JwtAuth;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -50,17 +49,6 @@ public class UserLoginService {
                             .orElseThrow(()->new UserNotFound("User Not Found Verify Username"));
 
 
-//            User user = userRepo.findById(userLogin1.getUser().getId())
-//                    .orElseThrow(
-//                            () -> new UserNotFound("User Not Found")
-//                    );
-
-            System.out.println("User Login Object Status:"+userLogin1.getUser().getStatus());
-            System.out.println("User Login Object Id:"+userLogin1.getUser().getId());
-
-//            System.out.println("User Object Status:"+user.getStatus());
-//            System.out.println("User Object Id:"+user.getId());
-
 
             if (!userLogin1.getUser().getStatus().equalsIgnoreCase("Active")) {
                 throw new UserNotFound(
@@ -83,6 +71,7 @@ public class UserLoginService {
             );
         }
     }
+
 
     public String forgetPassword(String username,String newPassword){
         UserLogin userLogin=userLoginRepo.findByUsername(username)

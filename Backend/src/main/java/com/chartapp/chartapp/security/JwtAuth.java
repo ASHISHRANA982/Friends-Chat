@@ -41,7 +41,7 @@ public class JwtAuth {
                     .setClaims(claims)
                     .setSubject(login.getUsername())
                     .setIssuedAt(new Date())
-                    .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*24*7))
+                    .setExpiration(new Date(System.currentTimeMillis()+1000*60*60*24*4))
                     .signWith(getSecretKey(), SignatureAlgorithm.HS256)
                     .compact();
         }
