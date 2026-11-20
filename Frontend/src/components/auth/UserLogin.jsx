@@ -11,6 +11,7 @@ import { MdPerson2, MdPassword } from "react-icons/md"
 import { toast } from "sonner"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { toastStyles } from '../../components/common/toastStyles'
+import { clearProfileMessage } from '../../api-calls/user/profileSlice'
 
 const schema = z.object({
   username: z
@@ -69,9 +70,8 @@ const UserLogin = () => {
         style: toastStyles.success
       })
 
-      dispatcher(loginSuccess(success.data))
+      dispatcher(loginSuccess())
       dispatcher(clearMessage())
-
       navigate("/profile")
     }
 
@@ -105,9 +105,11 @@ const UserLogin = () => {
 
     setLoginError("")
     dispatcher(clearMessage())
+    dispatcher(clearProfileMessage())
 
     dispatcher(loginUser(data))
   }
+
 
   return (
     <div className='main-login'>
@@ -149,6 +151,7 @@ const UserLogin = () => {
                 type="text"
                 placeholder='username'
                 id='username'
+                autoComplete='username'
                 {...register('username', {
                   onChange: handleUsernameChange
                 })}
@@ -171,6 +174,7 @@ const UserLogin = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder='password'
                 id='password'
+                autoComplete='current-password'
                 {...register('password', {
                   onChange: handlePasswordChange
                 })}

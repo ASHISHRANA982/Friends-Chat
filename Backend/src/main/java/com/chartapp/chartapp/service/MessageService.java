@@ -35,10 +35,6 @@ public class MessageService {
             throw new UserNotFound("Friend relation not found");
         }
 
-//        if (!"CONNECTED".equalsIgnoreCase(status)) {
-//            throw new InvalidCredentials("You cannot access this conversation");
-//        }
-
         return messageRepo.getConversation(userId, friendId);
     }
 

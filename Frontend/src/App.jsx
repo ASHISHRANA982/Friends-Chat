@@ -7,7 +7,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import UserLogin from './components/auth/UserLogin'
 import { ToastContainer } from 'react-toastify'
 import UserProfile from './components/user/UserProfile'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import UserRequest from './components/user/UserRequest'
 import UserFriends from './components/user/UserFriends'
 import ChatView from './components/chat/ChatView'
@@ -16,12 +16,34 @@ import { Toaster, toast } from 'sonner'
 import './App.css';
 import { UpdateUserProfile } from './components/user/UpdateUserProfile'
 import { useChat } from './components/chat/ChatContext'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
+import { userProfile} from './api-calls/user/profileSlice'
+
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, authChecked } = useSelector((state) => state.authSlice)
+
+  if (!authChecked) {
+    return <div className="loader-container"><div className="loader"></div></div>
+  }
+
+  return isAuthenticated ? children : <Navigate to="/accessDenied" replace />
+}
 
 
 function App() {
 
-  const { token } = useSelector((state) => state.authSlice);
+  const { isAuthenticated, authChecked } = useSelector((state) => state.authSlice);
+
+  const loggedIn = isAuthenticated && authChecked;
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(userProfile())
+  }, [dispatch])
+
   const { selectedContact } = useChat();
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -48,7 +70,7 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={token ? <Navigate to="/profile" /> : <Home />} />
+        <Route path="/" element={loggedIn ? <Navigate to="/profile" /> : <Home />} />
 
         <Route path="/about" element={<About />} />
 
@@ -60,16 +82,11 @@ function App() {
 
 
 
-        <Route path='/profile' element={token ? <UserProfile /> : <Navigate to='/accessDenied' replace />} />
-        <Route path='/request' element={token ? <UserRequest /> : <Navigate to='/accessDenied' replace />} />
-        <Route path='/friend' element={token ? <UserFriends /> : <Navigate to='/accessDenied' replace />} />
-        <Route path='/chat' element={token ? <ChatView /> : <Navigate to='/accessDenied' replace />} />
-        <Route path='/updateProfile' element={token ? <UpdateUserProfile /> : <Navigate to='/accessDenied' replace />} />
-
-
-
-
-
+        <Route path='/profile' element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+        <Route path='/request' element={<ProtectedRoute><UserRequest /></ProtectedRoute>} />
+        <Route path='/friend' element={<ProtectedRoute><UserFriends /></ProtectedRoute>} />
+        <Route path='/chat' element={<ProtectedRoute><ChatView /></ProtectedRoute>} />
+        <Route path='/updateProfile' element={<ProtectedRoute><UpdateUserProfile /></ProtectedRoute>} />
 
 
       </Routes>

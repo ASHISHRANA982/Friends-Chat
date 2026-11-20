@@ -27,7 +27,7 @@ public class MessageController {
         this.getSecurityId=getSecurityId;
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/conversation")
     public ResponseEntity<SuccessClass> getConversation(@Valid  @RequestBody ConversionFriendIdRequest conversionFriendIdRequest,
                                                         HttpServletRequest request) {
@@ -53,7 +53,7 @@ public class MessageController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/countInfo")
     public ResponseEntity<SuccessClass> getAllCountInfo(HttpServletRequest servletRequest){
         int userId=getSecurityId.SecurityIdChecker(servletRequest);
@@ -65,7 +65,7 @@ public class MessageController {
         );
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/updateRelationStatus")
     public ResponseEntity<SuccessClass>updateRelationStatus(@Valid @RequestBody RelationStatusRequest relationStatusRequest,
                                                  HttpServletRequest request){

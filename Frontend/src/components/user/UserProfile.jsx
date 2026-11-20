@@ -42,15 +42,10 @@ const UserProfile = () => {
   useEffect(() => {
     if (!profileRequested.current) {
       profileRequested.current = true;
+    
       dispatcher(userProfile());
     }
-    // if(success){
-    //   toast.success(success.message,
-    //     {
-    //       style:toastStyles.success,
-    //     }
-    //   );
-    // }
+ 
   }, [success, dispatcher]);
 
   useEffect(() => {

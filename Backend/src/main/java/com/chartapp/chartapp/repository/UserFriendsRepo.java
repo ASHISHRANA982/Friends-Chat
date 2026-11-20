@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserFriendsRepo extends JpaRepository<UserFriends,Integer> {
 
     boolean existsByFriend_PhoneNoAndUser_Id(String phoneNo, int userId);
-    List<UserFriends> findAllByUser_Id(int userId);
+
     UserFriends findByUser_PhoneNoAndFriend_Id(String phoneNo,int friendId);
 
     List<UserFriends> findByUser_IdAndStatusAndFriend_Status(int userId, String status,String userStatus);

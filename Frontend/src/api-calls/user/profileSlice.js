@@ -1,25 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import api from "../../services/api";
-import Cookies from "js-cookie";
 import { toast } from "sonner";
 
 
 export const userProfile = createAsyncThunk(
   "profile/userProfile",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
-      const response = await api.get("/user/getUser",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+    
+      const response = await api.get("/user/getUser"
       );
+  
       return response.data;
     }
     catch (error) {
-      console.log( "ERROR:",error.response?.data)
         return rejectWithValue(
         error.response?.data || {
           status: 500,
@@ -31,23 +25,19 @@ export const userProfile = createAsyncThunk(
   }
 );
 
+
 export const userLogout = createAsyncThunk(
   "logout/userLogout",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
-      const response = await api.post("/user/register/logoutUser",
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+      const response = await api.post(
+        "/user/register/logoutUser"
       );
+
       return response.data;
-    }
-    catch (error) {
-       return rejectWithValue(
+
+    } catch (error) {
+      return rejectWithValue(
         error.response?.data || {
           status: 500,
           message: "Something went wrong",
@@ -56,25 +46,22 @@ export const userLogout = createAsyncThunk(
       );
     }
   }
-)
+);
+
+
 
 export const updateProfileImage = createAsyncThunk(
   "profile/updateImage",
   async (imageUrl, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
       const res = await api.put(
         "/user/updatePic",
         {
           image: imageUrl,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
         }
+        
       );
-
+  
       return res.data;
 
     } catch (error) {
@@ -92,16 +79,10 @@ export const updateProfileImage = createAsyncThunk(
 export const updateProfile = createAsyncThunk(
   "profile/updateProfile",
   async (request, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
       const res = await api.put(
         "/user/updateProfile",
-        request,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        request
       );
 
       return res.data;
@@ -121,14 +102,10 @@ export const updateProfile = createAsyncThunk(
 export const getQuickInfo = createAsyncThunk(
   "profile/InfoProfile",
   async (_, { rejectWithValue }) => {
-    const token = Cookies.get("token");
     try {
-      const res = await api.get("/message/countInfo", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }
+      const res = await api.get("/message/countInfo"
       );
+    
       return res.data;
     }
     catch (error) {
@@ -148,16 +125,12 @@ export const deleteCloudinaryImage = createAsyncThunk(
 
   async (publicId, { rejectWithValue }) => {
 
-    const token = Cookies.get("token");
-
     try {
 
       const res = await api.delete(
         "/user/deleteCloudinaryImage",
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        
           data: {
             publicId: publicId,
           },

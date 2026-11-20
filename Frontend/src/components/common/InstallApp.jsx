@@ -31,7 +31,7 @@ function InstallApp() {
   if (!installPrompt) {
     return null;
   }
-  console.log(installPrompt)
+
 
   return (
     <div className="install-overlay">
