@@ -3,7 +3,7 @@ import { Client } from "@stomp/stompjs";
 import { toast } from "sonner";
 import { toastStyles } from "../../components/common/toastStyles";
 
-const SOCKET_URL = import.meta.env.VITE_API_URL;
+const SOCKET_URL = import.meta.env.VITE_WS_URL;
 
 let stompClient = null;
 
