@@ -1,37 +1,50 @@
 package com.chartapp.chartapp.security;
 
-import io.jsonwebtoken.Claims;
+
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetSecurityId {
 
 
-    private final JwtAuth jwtAuth;
+    private final JwtDecoder jwtDecoder;
 
-    public GetSecurityId(JwtAuth jwtAuth) {
-        this.jwtAuth = jwtAuth;
+    public GetSecurityId(JwtDecoder jwtDecoder) {
+        this.jwtDecoder = jwtDecoder;
     }
 
-    public int SecurityIdChecker(HttpServletRequest request){
+    public Integer SecurityIdChecker(HttpServletRequest request) {
 
-        Cookie[]cookies=request.getCookies();
-        String token=null;
+        Cookie[] cookies = request.getCookies();
+        String token = null;
 
-        if(cookies!=null)
-        {
-            for(Cookie cookie:cookies){
-                if("Refresh_Token".equals(cookie.getName())){
-                    token=cookie.getValue();
-                    break;
-                }
+        if (cookies == null) {
+            throw new RuntimeException("Authentication token not found");
+        }
+
+
+        for (Cookie cookie : cookies) {
+            if ("Refresh_Token".equals(cookie.getName())) {
+                token = cookie.getValue();
+                break;
             }
         }
 
-        Claims claims= jwtAuth.getId(token);
-        return (Integer) claims.get("id");
+        if (token == null || token.isBlank()) {
+            throw new RuntimeException("Refresh token not found");
+        }
+
+
+        Jwt jwt=jwtDecoder.decode(token);
+        Number id=jwt.getClaim("id");
+        if (id == null) {
+            throw new RuntimeException("User id missing in token");
+        }
+        return id.intValue();
     }
 
 

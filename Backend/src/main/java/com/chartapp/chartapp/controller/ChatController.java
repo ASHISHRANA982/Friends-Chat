@@ -42,6 +42,7 @@ public class ChatController {
         this.relationRepo=relationRepo;
     }
 
+
 @MessageMapping("/private-chat")
 public void sendMessage( @Payload PrivateMessage privateMessage,Principal principal) {
 
@@ -51,6 +52,8 @@ public void sendMessage( @Payload PrivateMessage privateMessage,Principal princi
         }
 
         String senderName = principal.getName();
+
+    System.out.println("Sender Name: "+senderName);
 
 
     UserLogin senderLogin = userLoginRepo.findByUsername(senderName).

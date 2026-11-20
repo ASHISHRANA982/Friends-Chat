@@ -45,7 +45,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+@PreAuthorize("hasAuthority('USER')")
     @GetMapping("/getUser")
     public ResponseEntity<SuccessClass> getUser(HttpServletRequest request){
 
@@ -68,7 +68,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/updatePic")
     public ResponseEntity<SuccessClass> updatePic(
             @Valid @RequestBody UpdateProfileImageRequest updateProfileImageRequest,
@@ -83,7 +83,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/updateProfile")
     public ResponseEntity<SuccessClass>updateProfile(@Valid @RequestBody UpdateProfileRequest updateProfileRequest, HttpServletRequest request){
 
@@ -97,7 +97,8 @@ public class UserController {
     }
 
     @PostMapping("/addFriends")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
+
     public ResponseEntity<?>AddFriends(@Valid @RequestBody AddFriendRequest addFriendRequest, HttpServletRequest request){
 
         int userId=getSecurityId.SecurityIdChecker(request);
@@ -118,17 +119,14 @@ public class UserController {
 
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/getPendingFriendRequest")
     public ResponseEntity<SuccessClass> getPendingRequest(HttpServletRequest request){
 
         int userId = getSecurityId.SecurityIdChecker(request);
-        System.out.println("Pending Request: "+userId);
 
 
         List<UserFriends> userFriends = userService.getPendingFriends(userId);
-
-
 
         List<PendingFriendResponse>responses=userFriends.stream()
                 .map(friend->new PendingFriendResponse(
@@ -148,7 +146,7 @@ public class UserController {
         );
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/getPendingFriendInvitation")
     public ResponseEntity<SuccessClass> getInvitationRequest(HttpServletRequest request){
 
@@ -175,7 +173,7 @@ public class UserController {
     }
 
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/acceptRequest")
     public ResponseEntity<?>acceptRequest(@Valid @RequestBody AcceptedFriendRequest acceptedFriendRequest,
                                           HttpServletRequest request){
@@ -190,7 +188,7 @@ public class UserController {
         );
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/getAcceptedFriends")
     public ResponseEntity<SuccessClass>getAcceptedFriends(HttpServletRequest request){
 
@@ -217,6 +215,7 @@ public class UserController {
     }
 
 
+    @PreAuthorize("hasAuthority('USER')")
     @DeleteMapping("/deleteCloudinaryImage")
     public ResponseEntity<?> deleteCloudinaryImage(@RequestBody DeleteCloudinaryImageRequest request) {
 

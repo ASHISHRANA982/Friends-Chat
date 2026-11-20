@@ -59,7 +59,7 @@ public class UserService {
             throw new UserAlreadyExist("User Already Exist With This Username");
         }
 
-        user.setStatus("Active");
+        user.setStatus("ACTIVE");
         user=userRepo.save(user);
 
         userLogin.setUser(user);
@@ -118,6 +118,7 @@ public class UserService {
         }
 
         UserFriends userFriends=new UserFriends();
+
         userFriends.setFriend(userFriend);
         userFriends.setUser(user);
         userFriends.setFriendNickName(friendName);

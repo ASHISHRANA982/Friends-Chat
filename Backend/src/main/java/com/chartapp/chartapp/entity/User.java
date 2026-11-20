@@ -38,6 +38,7 @@ public class User {
     private String profileTag;
     private String status;
 
+
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Message> sentMessages;

@@ -1,13 +1,11 @@
 package com.chartapp.chartapp.controller;
 
-import com.chartapp.chartapp.entity.User;
 import com.chartapp.chartapp.entity.UserLogin;
 import com.chartapp.chartapp.entity.UserLogout;
 import com.chartapp.chartapp.exception.SuccessClass;
 import com.chartapp.chartapp.dto.request.CreateNewUserRequest;
 import com.chartapp.chartapp.dto.request.ForgetPasswordRequest;
 import com.chartapp.chartapp.repository.UserLogoutRepo;
-import com.chartapp.chartapp.security.JwtAuth;
 import com.chartapp.chartapp.service.UserLoginService;
 import com.chartapp.chartapp.service.UserService;
 import jakarta.servlet.http.Cookie;
@@ -20,11 +18,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
-
-import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/user/register")
@@ -33,24 +33,20 @@ public class UserRegisterController {
 
     private final UserService userService;
     private final UserLoginService userLoginService;
-    private final JwtAuth jwtAuth;
+    private final JwtDecoder jwtDecoder;
     private final UserLogoutRepo userLogoutRepo;
 
-
-
-    public UserRegisterController(UserService userService, UserLoginService userLoginService,
-                          JwtAuth jwtAuth,
-                          UserLogoutRepo userLogoutRepo) {
+    public UserRegisterController(UserService userService, UserLoginService userLoginService, JwtDecoder jwtDecoder, UserLogoutRepo userLogoutRepo) {
         this.userService = userService;
         this.userLoginService = userLoginService;
-        this.jwtAuth = jwtAuth;
+        this.jwtDecoder = jwtDecoder;
         this.userLogoutRepo = userLogoutRepo;
     }
 
     @PostMapping("/createUser")
     public ResponseEntity<SuccessClass> CreateUser(@Valid @RequestBody CreateNewUserRequest createNewUserRequest){
 
-        User user= userService.createUser(createNewUserRequest.user(), createNewUserRequest.userLogin());
+       userService.createUser(createNewUserRequest.user(), createNewUserRequest.userLogin());
        return ResponseEntity.ok(
                SuccessClass.success("User Account Created Successfully",null)
        );
@@ -58,16 +54,8 @@ public class UserRegisterController {
 
     @PostMapping("/loginUser")
     public ResponseEntity<SuccessClass>LoginUser(@Valid @RequestBody UserLogin userLogin, HttpServletResponse response){
-        String token= userLoginService.LoginUser(userLogin,"USER");
 
-        ResponseCookie cookie=ResponseCookie
-                .from("Refresh_Token",token)
-                .httpOnly(true)
-                .secure(true)
-                .path("/")
-                .sameSite("None")
-                .maxAge(Duration.ofDays(4))
-                .build();
+        ResponseCookie cookie=userLoginService.LoginUser(userLogin,"USER");
 
         response.setHeader(HttpHeaders.SET_COOKIE,cookie.toString());
 
@@ -83,7 +71,7 @@ public class UserRegisterController {
         return ResponseEntity.ok(message);
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/logoutUser")
     public ResponseEntity<SuccessClass> logoutUser(HttpServletResponse response,HttpServletRequest request)
     {
@@ -103,9 +91,12 @@ public class UserRegisterController {
                 .maxAge(0)
                 .build();
 
+        Jwt jwt=jwtDecoder.decode(token);
+        Instant now=jwt.getExpiresAt();
+
             UserLogout userLogout = new UserLogout(
                     token,
-                    jwtAuth.getExpiryDate(token)
+                   Date.from(now)
             );
 
             userLogoutRepo.save(userLogout);
