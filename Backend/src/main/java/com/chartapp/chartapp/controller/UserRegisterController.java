@@ -20,6 +20,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.WebUtils;
@@ -41,6 +42,15 @@ public class UserRegisterController {
         this.userLoginService = userLoginService;
         this.jwtDecoder = jwtDecoder;
         this.userLogoutRepo = userLogoutRepo;
+    }
+
+    @GetMapping("/get/csrf")
+    public ResponseEntity<SuccessClass>getCsrf(CsrfToken csrfToken){
+        String token=csrfToken!=null? csrfToken.getToken() : null;
+
+        System.out.println("CSRF TOKEN: "+token);
+
+        return ResponseEntity.ok(SuccessClass.success("csrf token",token));
     }
 
     @PostMapping("/createUser")

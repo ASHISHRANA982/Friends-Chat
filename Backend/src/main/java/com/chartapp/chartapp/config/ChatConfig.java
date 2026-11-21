@@ -9,6 +9,8 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+import java.util.Arrays;
+
 @Configuration
 @EnableWebSocketMessageBroker
 public class ChatConfig implements WebSocketMessageBrokerConfigurer {
@@ -24,8 +26,13 @@ public class ChatConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
+        String[] origins = Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim)
+                .filter(origin -> !origin.isEmpty())
+                .toArray(String[]::new);
+
         registry.addEndpoint("/chat")
-                .setAllowedOrigins(allowedOrigins.split(","))
+                .setAllowedOrigins(origins)
                 .addInterceptors(new CookieHandshakeInterceptor())
                 .withSockJS();
     }
