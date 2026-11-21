@@ -20,7 +20,8 @@ public class CsrfCookieFilter extends OncePerRequestFilter {
         boolean safe = method.equals("GET") || method.equals("HEAD")
                 || method.equals("OPTIONS") || method.equals("TRACE");
         String path = request.getRequestURI();
-        boolean ignored = path.equals("/user/register/createUser") || path.equals("/user/register/loginUser");
+        boolean ignored = path.equals("/user/register/createUser") || path.equals("/user/register/loginUser")
+            || path.startsWith("/chat/**") || path.equals("/contact/saveContact") || path.equals("/api/health");
 
         if (!safe && !ignored) {
             String cookieToken = null;

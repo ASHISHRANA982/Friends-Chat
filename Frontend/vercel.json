@@ -1,8 +1,12 @@
 {
-  "rewrites":[
+  "rewrites": [
     {
-      "source":"/(.*)",
-      "destination":"/"
+      "source": "/api/:path*",
+      "destination": "https://friends-chat-84p3.onrender.com/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
