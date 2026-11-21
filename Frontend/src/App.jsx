@@ -19,6 +19,7 @@ import { useChat } from './components/chat/ChatContext'
 import { useState, useEffect } from 'react'
 
 import { userProfile} from './api-calls/user/profileSlice'
+import {  initializeCsrf } from './services/csrfService'
 
 
 const ProtectedRoute = ({ children }) => {
@@ -42,7 +43,11 @@ function App() {
 
   useEffect(() => {
     dispatch(userProfile())
-  }, [dispatch])
+  }, [dispatch]);
+
+useEffect(()=>{
+initializeCsrf();
+})
 
   const { selectedContact } = useChat();
 

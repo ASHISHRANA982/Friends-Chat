@@ -16,6 +16,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -52,7 +55,7 @@ public class SecurityFilterConfig {
                         csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                                 .csrfTokenRequestHandler(handler)
                                 .ignoringRequestMatchers("/user/register/createUser","/user/register/loginUser",
-                                        "/chat/**","/contact/saveContact",
+                                        "/chat/","/contact/saveContact",
                                         "/api/health")
         )
                         .addFilterAfter(new CsrfCookieFilter(),BasicAuthenticationFilter.class);
@@ -104,23 +107,38 @@ public class SecurityFilterConfig {
     }
 
     @Bean
-    public WebMvcConfigurer corsConfigurer(){
+    public CorsConfigurationSource corsConfigurationSource() {
 
-        List<String> origins = Arrays.stream(allowedOrigins.split(","))
-                .map(String::trim)
-                .toList();
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins(origins.toArray(new String[0]))
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("Content-Type", "X-XSRF-TOKEN", "Authorization")
-                        .allowCredentials(true);
-            }
-        };
+        CorsConfiguration config = new CorsConfiguration();
+
+        config.setAllowedOrigins(
+                Arrays.stream(allowedOrigins.split(","))
+                        .map(String::trim)
+                        .toList()
+        );
+
+        config.setAllowedMethods(
+                List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
+        );
+
+        config.setAllowedHeaders(
+                List.of(
+                        "Content-Type",
+                        "X-XSRF-TOKEN",
+                        "Authorization",
+                        "Accept"
+                )
+        );
+
+        config.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/**", config);
+
+        return source;
     }
-
 
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter(){
