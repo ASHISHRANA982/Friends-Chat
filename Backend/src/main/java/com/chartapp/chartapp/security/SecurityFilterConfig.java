@@ -52,10 +52,10 @@ public class SecurityFilterConfig {
                 cors(Customizer.withDefaults()).
                 csrf(
                 csrf->
-                        csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+                        csrf.csrfTokenRepository(csrfTokenRepository())
                                 .csrfTokenRequestHandler(handler)
                                 .ignoringRequestMatchers("/user/register/createUser","/user/register/loginUser",
-                                        "/chat/","/contact/saveContact",
+                                        "/chat/","/chat/**","/contact/saveContact",
                                         "/api/health")
         )
                         .addFilterAfter(new CsrfCookieFilter(),BasicAuthenticationFilter.class);
@@ -82,6 +82,24 @@ public class SecurityFilterConfig {
 
         return httpSecurity.build();
     }
+
+
+    @Bean
+    public CookieCsrfTokenRepository csrfTokenRepository() {
+
+        CookieCsrfTokenRepository repository =
+                CookieCsrfTokenRepository.withHttpOnlyFalse();
+
+        repository.setCookieCustomizer(cookie -> cookie
+                .sameSite("None")
+                .secure(true)
+                .httpOnly(false)
+                .path("/")
+        );
+
+        return repository;
+    }
+
 
     @Bean
     public BearerTokenResolver bearerTokenResolver() {
