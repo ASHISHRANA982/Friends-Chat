@@ -12,7 +12,6 @@ export const initializeCsrf = async () => {
 
 
     } catch (error) {
-        toast.warning(error.message);
         throw error;
     }
 };
