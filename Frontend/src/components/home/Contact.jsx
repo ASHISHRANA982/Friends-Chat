@@ -65,28 +65,29 @@ export default function Contact() {
     dispatcher(contact(contactRequest))
   }
 
- useEffect(() => {
-  if (contactError) {
-    setError(
-      contactError.errors
-        ? Object.values(contactError.errors)[0]
-        : contactError.message
-    );
-  }
+  useEffect(() => {
+    if (contactError) {
+      setError(
+        contactError.errors
+          ? Object.values(contactError.errors)[0]
+          : contactError.message
+      );
+    }
 
-  if (contactMessage) {
-    setError("");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    });
-  }
-}, [contactError, contactMessage]);
+    if (contactMessage) {
+      setError("");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    }
+  }, [contactError, contactMessage]);
 
   return (
     <div className="contact-page">
+
       <header className='contact-header-page'>
 
         <div className='contact-header-text-div'>
@@ -147,54 +148,56 @@ export default function Contact() {
 
       <main className='contact-main-page'>
 
-        <div className="contact-page-card-1">
-          <div className="contact-main-logo">
-            <FaEnvelope size={22} />
 
+        <div className="contactMainCard">
+
+          <div className="contact-page-card-1">
+            <div className="contact-main-logo">
+              <FaEnvelope size={18} />
+
+            </div>
+            <div className="contact-main-text">
+              <h3>Email Us</h3>
+              <p id='contact-main-p1'>friendschatsuppot@gmail.com</p>
+              <p id='contact-main-p2'>We'll reply as soon as possible</p>
+            </div>
           </div>
-          <div className="contact-main-text">
-            <h3>Email Us</h3>
-            <p id='contact-main-p1'>friendschatsuppot@gmail.com</p>
-            <p id='contact-main-p2'>We'll reply as soon as possible</p>
+
+          <div className="contact-page-card-1">
+            <div className="contact-main-logo">
+              <LuPhone size={18} />
+            </div>
+            <div className="contact-main-text">
+              <h3>Contact Us</h3>
+              <p id='contact-main-p1'>+91 12345 6789</p>
+              <p id='contact-main-p2'>Mon-Sat, 09:00 AM-06:00 PM</p>
+            </div>
           </div>
+
+          <div className="contact-page-card-1">
+            <div className="contact-main-logo">
+              <LuMapPin size={18} />
+            </div>
+            <div className="contact-main-text">
+              <h3>Location</h3>
+              <p id='contact-main-p1'>755022 Odisha Jajpur</p>
+              <p id='contact-main-p2'>Odisha India</p>
+            </div>
+          </div>
+
+          <div className="contact-page-card-1">
+            <div className="contact-main-logo">
+              <LuClock size={18} />
+            </div>
+            <div className="contact-main-text">
+              <h3>Response Time</h3>
+              <p id='contact-main-p1'>Usually within 24 hours</p>
+              <p id='contact-main-p2'>We value your time</p>
+            </div>
+          </div>
+
         </div>
 
-        <div className="contact-page-card-1">
-          <div className="contact-main-logo">
-            <LuPhone size={22} />
-          </div>
-          <div className="contact-main-text">
-            <h3>Contact Us</h3>
-            <p id='contact-main-p1'>+91 12345 6789</p>
-            <p id='contact-main-p2'>Mon-Sat, 09:00 AM-06:00 PM</p>
-          </div>
-        </div>
-
-        <div className="contact-page-card-1">
-          <div className="contact-main-logo">
-            <LuMapPin size={22} />
-          </div>
-          <div className="contact-main-text">
-            <h3>Location</h3>
-            <p id='contact-main-p1'>755022 Odisha Jajpur</p>
-            <p id='contact-main-p2'>Odisha India</p>
-          </div>
-        </div>
-
-        <div className="contact-page-card-1">
-          <div className="contact-main-logo">
-            <LuClock size={22} />
-          </div>
-          <div className="contact-main-text">
-            <h3>Response Time</h3>
-            <p id='contact-main-p1'>Usually within 24 hours</p>
-            <p id='contact-main-p2'>We value your time</p>
-          </div>
-        </div>
-
-        <div className='contact-main-headset'>
-          <span> <LuHeadset size={26} /></span>
-        </div>
 
       </main>
 

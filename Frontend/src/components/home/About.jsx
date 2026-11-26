@@ -1,5 +1,4 @@
-import React from 'react'
-import Navbar from './Navbar';
+
 import './styles/about.css'
 import AboutImg from "../../assets/Friends.png"
 import Connection from "../../assets/connection.png"
@@ -7,8 +6,12 @@ import Organize from "../../assets/organize.png"
 import Merge from "../../assets/Merge.png"
 import MessageIcon from "../../assets/Messageicon.png"
 import Update from "../../assets/update.png"
+import { useNavigate } from 'react-router-dom'
 
 const About = () => {
+
+  let navigate=useNavigate();
+
   return (
     
       <main id="about-mainWrapper">
@@ -100,7 +103,7 @@ const About = () => {
 
           </section>
 
-          <button>Start Connecting</button>
+          <button onClick={()=>navigate('/')}>Start Connecting</button>
 
         </footer>
 

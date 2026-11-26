@@ -8,17 +8,19 @@ import UserLogin from './components/auth/UserLogin'
 import { ToastContainer } from 'react-toastify'
 import UserProfile from './components/user/UserProfile'
 import { useSelector, useDispatch } from 'react-redux'
-import UserRequest from './components/user/UserRequest'
 import UserFriends from './components/user/UserFriends'
 import ChatView from './components/chat/ChatView'
 import { AccessDenie } from './components/common/AccessDenie'
-import { Toaster, toast } from 'sonner'
+import { Toaster} from 'sonner'
 import './App.css';
 import { UpdateUserProfile } from './components/user/UpdateUserProfile'
-import { useChat } from './components/chat/ChatContext'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import { userProfile} from './api-calls/user/profileSlice'
+import Root from './components/Root'
+import AddFriend from './components/user/AddFriend'
+import Request from './components/user/Request';
+import Invitation from './components/user/Invitation'
 
 
 const ProtectedRoute = ({ children }) => {
@@ -31,68 +33,69 @@ const ProtectedRoute = ({ children }) => {
   return isAuthenticated ? children : <Navigate to="/accessDenied" replace />
 }
 
-
 function App() {
 
-  const { isAuthenticated, authChecked } = useSelector((state) => state.authSlice);
+  const { isAuthenticated, authChecked } = useSelector(
+    (state) => state.authSlice
+  );
 
-  const loggedIn = isAuthenticated && authChecked;
-
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(userProfile())
-  }, [dispatch])
-
-  const { selectedContact } = useChat();
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    dispatch(userProfile());
+  }, [dispatch]);
 
-    window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  if (!authChecked) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
+  const loggedIn = isAuthenticated;
 
   return (
     <>
-
-      {
-        !(isMobile && selectedContact) && <Navbar />
-      }
+      {!loggedIn && <Navbar />}
 
       <Routes>
 
-        <Route path="/" element={loggedIn ? <Navigate to="/profile" /> : <Home />} />
+        <Route path="/" element={loggedIn ? <Navigate to="/root" replace /> : <Home />} />
 
         <Route path="/about" element={<About />} />
 
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/register" element={<UserRegistration />} />
-        <Route path='/login' element={<UserLogin />} />
-        <Route path='/accessDenied' element={<AccessDenie />} />
 
+        <Route path="/login" element={<UserLogin />} />
 
+        <Route path="/accessDenied" element={<AccessDenie />} />
 
-        <Route path='/profile' element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
-        <Route path='/request' element={<ProtectedRoute><UserRequest /></ProtectedRoute>} />
-        <Route path='/friend' element={<ProtectedRoute><UserFriends /></ProtectedRoute>} />
-        <Route path='/chat' element={<ProtectedRoute><ChatView /></ProtectedRoute>} />
-        <Route path='/updateProfile' element={<ProtectedRoute><UpdateUserProfile /></ProtectedRoute>} />
+        <Route path="/root" element={<ProtectedRoute><Root /></ProtectedRoute>} />
 
+        <Route path="/profile" element={<ProtectedRoute><UserProfile /></ProtectedRoute>} />
+
+        <Route path="/friend" element={<ProtectedRoute><UserFriends /></ProtectedRoute>} />
+
+        <Route path="/chat" element={<ProtectedRoute><ChatView /></ProtectedRoute>} />
+
+        <Route path="/updateProfile" element={<ProtectedRoute><UpdateUserProfile /></ProtectedRoute>} />
+
+        <Route path="/addFriends" element={<ProtectedRoute><AddFriend /></ProtectedRoute>} />
+
+        <Route path="/request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
+
+        <Route path="/invitation" element={<ProtectedRoute><Invitation /></ProtectedRoute>} />
 
       </Routes>
 
       <ToastContainer />
-      <Toaster position='top-center'
+
+      <Toaster
+        position="top-center"
         toastOptions={{
           classNames: {
             success: "toast-success",
@@ -100,9 +103,8 @@ function App() {
           },
         }}
       />
-
     </>
-  )
+  );
 }
 
 export default App

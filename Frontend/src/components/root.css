@@ -1,0 +1,447 @@
+
+#rootMain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  background-color: #1A2534;
+}
+
+
+.mainSection1 {
+  width: 5%;
+  min-width: 65px;
+  height: 100%;
+  background-color: #101C2A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.section1Menu {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.section1Menu .icons {
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 5px;
+  color: #8999AA;
+}
+
+.section1Menu .icons:hover {
+  background-color: #1B2A3D;
+}
+
+.section1ProfileSpan {
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.mainSection2 {
+  width: 25%;
+  min-width: 280px;
+  height: 100%;
+  background-color: #0E1621;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.mainSection2ContactList1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.mainSection2ContactList1 h3 {
+  font-size: 25px;
+  color: white;
+}
+
+.mainSection2ContactList1 .contactListHeader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contactListHeaderFriend {
+  padding: 8px 13px;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #10B982;
+  color: #00140E;
+}
+
+.headerP {
+  padding: 8px 13px;
+  border-radius: 15px;
+  background-color: #18222E;
+  color: #8896A7;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contactListSearchBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactListSearchBox input {
+  width: 90%;
+  padding: 15px 20px;
+  border: 1px solid #252F40;
+  outline: none;
+  border-radius: 10px;
+  background-color: #18222E;
+  color: white;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.contactListSearchBox input::placeholder {
+  font-size: 15px;
+}
+
+.mainSection2ContactList2 {
+  width: 95%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.contactListLine {
+  width: 100%;
+  border: 0.1px solid #566489;
+}
+
+.contactListMainSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  cursor: pointer;
+}
+
+.contactListSubSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.contactListSubSection:hover {
+  background-color: #1B2A3D;
+}
+
+.contactListProfileImage {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contactListText .p1 {
+  color: #CFD8E0;
+}
+
+.contactListText .p2 {
+  color: #8C9DAF;
+}
+
+.mainSection3 {
+  width: 65%;
+  min-width: 0;
+  height: 100%;
+  background-color: #0E1621;
+  flex: 1;
+  margin-left: 0.5px;
+}
+
+
+@media (max-width: 1324px) {
+  .mainSection1 {
+    width: 7%;
+  }
+
+  .mainSection2 {
+    width: 35%;
+    min-width: 250px;
+    padding: 15px 10px;
+  }
+
+  .mainSection3 {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+  }
+
+  .mainSection2ContactList1 h3 {
+    font-size: 22px;
+  }
+
+  .mainSection2ContactList1 .contactListHeader {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .contactListHeaderFriend,
+  .headerP {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mainSection1 {
+    width: 65px;
+    min-width: 65px;
+  }
+
+  .mainSection2 {
+    width: 35%;
+    min-width: 230px;
+    padding: 15px 8px;
+  }
+
+  .mainSection3 {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .contactListSubSection {
+    gap: 7px;
+    padding: 8px 5px;
+  }
+
+  .contactListProfileImage {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+  .section1MenuColor {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #rootMain {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .mainSection1 {
+    width: 65px;
+    min-width: 65px;
+    height: 100%;
+    padding: 15px 0;
+    flex-direction: column;
+  }
+
+  .section1Menu {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .mainSection2 {
+    width: 40%;
+    min-width: 220px;
+    padding: 15px 8px;
+  }
+
+  .mainSection3 {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+  }
+
+  .contactListSubSection {
+    gap: 7px;
+    padding: 8px 5px;
+  }
+
+  .contactListProfileImage {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+}
+
+@media (max-width: 680px) {
+  #rootMain {
+    width: 100%;
+    height: 100dvh;
+    flex-direction: column;
+  }
+
+  .mainSection1 {
+    order: 2;
+    width: 100%;
+    min-width: 0;
+    height: 65px;
+    min-height: 65px;
+    padding: 5px 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 100;
+    border-top: 1px solid #253446;
+  }
+
+  .section1Menu {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0;
+  }
+
+  .section1MenuColor {
+    display: none;
+  }
+
+  .section1Menu .icons {
+    padding: 8px;
+  }
+
+  .section1profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section1ProfileSpan {
+    padding: 9px;
+    font-size: 1rem;
+  }
+
+  .mainSection2 {
+    order: 1;
+    width: 100%;
+    min-width: 0;
+    height: calc(100% - 65px);
+    padding: 15px;
+    flex: 1;
+  }
+
+  .mainSection2ContactList1 {
+    gap: 12px;
+  }
+
+  .mainSection2ContactList1 h3 {
+    font-size: 22px;
+  }
+
+  .mainSection2ContactList1 .contactListHeader {
+    justify-content: space-evenly;
+  }
+  .mainSection2ContactList1 .contactListHeader p{
+      padding: 10px 40px;
+      border-radius: 10px;
+  }
+
+  .mainSection2ContactList2 {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .contactListSubSection {
+    padding: 10px;
+  }
+
+  .contactListProfileImage {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+  }
+
+  .mainSection3 {
+    display: none;
+  }
+
+  .mainSection1.mobileHidden,
+  .mainSection2.mobileHidden {
+    display: none;
+  }
+
+  #rootMain:has(.mainSection1.mobileHidden) .mainSection3 {
+    display: block;
+    order: 1;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    flex: 1;
+  }
+}
+
+@media (max-width: 460px) {
+  .mainSection1 {
+    height: 60px;
+    min-height: 60px;
+  }
+
+  .section1Menu .icons {
+    padding: 6px;
+  }
+
+  .section1ProfileSpan {
+    padding: 7px;
+    font-size: 0.9rem;
+  }
+
+  .mainSection2 {
+    padding: 12px 8px;
+  }
+
+  .mainSection2ContactList1 h3 {
+    font-size: 20px;
+  }
+  .mainSection2ContactList1 .contactListHeader p{
+    padding: 10px 15px;
+  }
+}

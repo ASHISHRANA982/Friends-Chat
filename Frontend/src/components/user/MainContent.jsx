@@ -34,11 +34,6 @@ const MainContent = ({searchData }) => {
 
   }, [acceptedFriendError, dispatcher])
 
-  // useEffect(() => {
-  //   if (acceptedFriend) {
-  //     toast.success(acceptedFriend.message);
-  //   }
-  // }, [acceptedFriend, dispatcher])
 
   const filteredFriends = acceptedFriend?.data?.filter((data) =>
     data.contactName

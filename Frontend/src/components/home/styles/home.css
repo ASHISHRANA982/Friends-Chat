@@ -11,7 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #F8FAFC;  
+  background: #0E1621;  
   overflow-y: auto;
 }
 
@@ -34,20 +34,20 @@
 }
 
 .box1-home .tag-line {
-  width: 80%;
+  width: 50%;
   margin-top: 50px;
   margin-bottom: 40px;
   color: #00A884;
   padding: 8px;
-  background: #d0f0ea;
+  background: #12352E;
   border-radius: 20px;
-  border: 0.5px solid #9adfd3;
 }
 
 .box1-home h1 {
   font-size: 80px;
   font-style: oblique;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
 }
 
 #h1-c {
@@ -67,13 +67,14 @@
   font-size: 25px;
   letter-spacing: 3px;
   font-family: 'Times New Roman', Times, serif;
+  color: #818D9A;
 }
 
 .home-button-div {
   display: flex;
-  gap: 120px;
+  gap: 20px;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
 }
 
 .home-button-div .btn-1 {
@@ -81,14 +82,15 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  font-size: 25px;
+  font-size: 20px;
   border: none;
-  padding: 17px;
+  padding: 13px 25px;
   border-radius: 10px;
-  background-color: #00A884;
-  color: white;
+  background-color: #10B982;
+  color: #032B1D;
   margin-bottom: 10px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .home-button-div .btn-2 {
@@ -96,12 +98,12 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  font-size: 25px;
+  font-size: 20px;
   border: 1px solid #00A884;
-  padding: 16px;
+  padding: 13px 20px;
   border-radius: 10px;
   color: #00A884;
-  background-color: #F8FAFC;
+  background-color: #0E1621;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -123,6 +125,9 @@ background-size: cover;
   justify-content: center;
   gap: 30px;
 
+}
+.sub-box1-container h2{
+  color: white;
 }
 
 .sub-box1-container span {
@@ -147,35 +152,40 @@ background-size: cover;
   display: flex;
   align-items: center;
   gap: 25px;
-  background-color: white;
+  background-color: #18222E;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 0px 4px 0px green;
 }
 
 .msg-icon {
-  color: #00A884;
-  background-color: #cdece5;
+  color: #31CE96;
+  background-color: #12352E;
   padding: 12px;
   border-radius: 50%;
 }
 
 .friends-icon {
-  color: rgb(0, 157, 255);
-  background-color: rgb(199, 222, 236);
+  color: #10B982;
+  background-color: #12352E;
   padding: 12px;
   border-radius: 50%;
 }
 
 .security-icon {
-  color: rgb(108, 15, 196);
-  background-color: rgb(221, 203, 239);
+  color: #10B982;
+  background-color: #12352E;
   padding: 12px;
   border-radius: 50%;
 }
 
 .sub-box2-container .content h3 {
   margin-bottom: 10px;
+  color: white;
+}
+.sub-box2-container .content p {
+  margin-bottom: 10px;
+  color: #8D9BAA;
 }
 
 
@@ -185,7 +195,7 @@ background-size: cover;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  background-color: #0F172A;
+  background-color: #080d18;
   padding: 30px;
 }
 
@@ -208,7 +218,7 @@ background-size: cover;
 .footer-tag-line{
   background-color: #0F172A;
   text-align: center;
-  color: white;
+  color: #8D9BAA;
   border-top:1px solid whitesmoke ;
   padding: 20px;
   

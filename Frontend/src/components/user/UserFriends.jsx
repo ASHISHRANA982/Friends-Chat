@@ -8,9 +8,9 @@ import { IoCloseOutline, IoInformationCircleOutline } from "react-icons/io5";
 import ChatView from '../chat/ChatView';
 import { useChat } from '../chat/ChatContext';
 
-const MainContent = lazy(() => import("./MainContent"))
-const UserRequest = lazy(() => import('./UserRequest'));
-const AddFriend = lazy(() => import('./AddFriend'));
+// const MainContent = lazy(() => import("./MainContent"))
+// const UserRequest = lazy(() => import('./UserRequest'));
+// const AddFriend = lazy(() => import('./AddFriend'));
 
 const UserFriends = ({ setShowProfile, setShowInfo }) => {
 
@@ -107,8 +107,8 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
         )
       }
 
-      <div>
-        {
+      {/* <div> */}
+        {/* {
           activeTab && 
           <Suspense fallback={
             <p></p>
@@ -135,9 +135,9 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
             </Suspense>
           </div>
         )
-      }
+      } */}
 
-      {
+      {/* {
         !activeTab && selectedContact && (
           <div className="content-area chat-content-area">
             <Suspense fallback={<p></p>}>
@@ -147,7 +147,7 @@ const UserFriends = ({ setShowProfile, setShowInfo }) => {
               </Suspense>
           </div>
         )
-      }
+      } */}
 
     </div>
   )

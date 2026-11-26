@@ -12,7 +12,7 @@ export  function AccessDenie() {
 
         <FaLock className="lock-icon" />
 
-        <h1>403</h1>
+        <h1>401</h1>
 
         <h2>Access Denied</h2>
 

@@ -1,0 +1,161 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0E1621 inset !important;
+  -webkit-text-fill-color: white !important;
+  caret-color: white;
+}
+
+#addFriendsMain {
+  width: 100%;
+  min-height: 100%;
+  background-color: #0E1621;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem 1.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.addFriendsSub {
+  width: 100%;
+  max-width: 550px;
+  min-height: 450px;
+  background-color: #18222E;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.addFriendsHeading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: white;
+  text-align: center;
+}
+
+.addFriendsInputGroup {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.addFriendsInputGroup .inputBox {
+  width: 100%;
+  padding: 16px 12px;
+  font-size: 1rem;
+  outline: none;
+  border: 2px solid #253446;
+  background-color: #0E1621;
+  color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.addFriendsInputGroup .inputBox:focus {
+  border-color: #00A884;
+}
+
+/* Buttons */
+.addFriendsButton {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.addFriendsButton .cancelButton,
+.addFriendsButton .addButton {
+  flex: 1;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addFriendsButton .cancelButton {
+  background-color: #dc3545;
+}
+
+.addFriendsButton .cancelButton:hover {
+  background-color: #bb2d3b;
+}
+
+.addFriendsButton .addButton {
+  background-color: #10B982;
+}
+
+.addFriendsButton .addButton:hover:not(:disabled) {
+  background-color: #00A884;
+}
+
+.addFriendsButton .addButton:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  #addFriendsMain {
+    padding-top: 4rem;
+  }
+
+  .addFriendsSub {
+    max-width: 500px;
+    min-height: 400px;
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #addFriendsMain {
+    padding: 2rem 1rem;
+    align-items: center;
+    min-height: 100%;
+  }
+
+  .addFriendsSub {
+    width: 100%;
+    min-height: 600px;
+    padding: 3rem 1.25rem;
+    gap: 2rem;
+    justify-content: center;
+    border-radius: 16px;
+  }
+
+  .addFriendsInputGroup,
+  .addFriendsButton {
+    max-width: 100%;
+  }
+
+  .addFriendsButton {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .addFriendsButton .cancelButton,
+  .addFriendsButton .addButton {
+    width: 100%;
+    flex: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .addFriendsSub {
+    min-height: 70vh;
+    padding: 3rem 1rem;
+    gap: 2rem;
+  }
+}
