@@ -11,16 +11,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import UserFriends from './components/user/UserFriends'
 import ChatView from './components/chat/ChatView'
 import { AccessDenie } from './components/common/AccessDenie'
-import { Toaster} from 'sonner'
+import { Toaster } from 'sonner'
 import './App.css';
 import { UpdateUserProfile } from './components/user/UpdateUserProfile'
 import { useEffect } from 'react'
 
-import { userProfile} from './api-calls/user/profileSlice'
+import { userProfile } from './api-calls/user/profileSlice'
 import Root from './components/Root'
 import AddFriend from './components/user/AddFriend'
 import Request from './components/user/Request';
 import Invitation from './components/user/Invitation'
+import { initializeCsrf } from './services/csrfService'
 
 
 const ProtectedRoute = ({ children }) => {
@@ -44,6 +45,10 @@ function App() {
   useEffect(() => {
     dispatch(userProfile());
   }, [dispatch]);
+
+  useEffect(() => {
+    initializeCsrf();
+  })
 
 
   if (!authChecked) {
