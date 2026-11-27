@@ -46,12 +46,6 @@ useEffect(()=>{
 initializeCsrf();
 })
 
- 
-
-  useEffect(() => {
-    initializeCsrf();
-  })
-
 
   if (!authChecked) {
     return (
