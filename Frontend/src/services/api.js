@@ -16,6 +16,7 @@ let csrfToken = null;
 
 export const setCsrfToken = (token) => {
     csrfToken = token;
+
 };
 
 api.interceptors.request.use((config) => {
