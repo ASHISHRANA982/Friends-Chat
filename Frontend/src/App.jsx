@@ -46,9 +46,7 @@ useEffect(()=>{
 initializeCsrf();
 })
 
-  const { selectedContact } = useChat();
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+ 
 
   useEffect(() => {
     initializeCsrf();
