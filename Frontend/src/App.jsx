@@ -16,12 +16,8 @@ import './App.css';
 import { UpdateUserProfile } from './components/user/UpdateUserProfile'
 import { useEffect } from 'react'
 
-import { userProfile } from './api-calls/user/profileSlice'
-import Root from './components/Root'
-import AddFriend from './components/user/AddFriend'
-import Request from './components/user/Request';
-import Invitation from './components/user/Invitation'
-import { initializeCsrf } from './services/csrfService'
+import { userProfile} from './api-calls/user/profileSlice'
+import {  initializeCsrf } from './services/csrfService'
 
 
 const ProtectedRoute = ({ children }) => {
@@ -43,8 +39,16 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(userProfile());
+    dispatch(userProfile())
   }, [dispatch]);
+
+useEffect(()=>{
+initializeCsrf();
+})
+
+  const { selectedContact } = useChat();
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     initializeCsrf();
