@@ -18,6 +18,9 @@ import { useEffect } from 'react'
 
 import { userProfile} from './api-calls/user/profileSlice'
 import {  initializeCsrf } from './services/csrfService'
+import Root from './components/Root'
+import AddFriend from './components/user/AddFriend'
+import Invitation from './components/user/Invitation'
 
 
 const ProtectedRoute = ({ children }) => {

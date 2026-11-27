@@ -6,7 +6,7 @@ const DefaultChatView = ({ name }) => {
     <main id='mainDefaultChatView'>
 
       <section className="defaultChatViewSection">
-        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg>
 
         <div>
           <p className='defaultChatText1'>Welcome, {name}</p>
