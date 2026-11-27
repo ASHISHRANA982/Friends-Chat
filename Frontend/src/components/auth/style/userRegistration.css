@@ -5,208 +5,265 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
-  background-color: #F8FAFC;
+  gap: 65px;
+  padding: 110px 6% 60px;
+  background-color: #0E1621;
+  box-sizing: border-box;
 }
 
 .register-user-card {
-  width: 40%;
+  flex: 1;
+  width: 45%;
   display: flex;
-  flex-direction: column;
-  gap: 60px;
+  justify-content: center;
   align-items: center;
 }
 
 .register-inner-card-1 {
+  width: 100%;
   display: flex;
-  gap: 25px;
   flex-direction: column;
+  gap: 28px;
+}
+
+.register-inner-card-1 .register-h1 {
+  color: #E5ECF2;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .register-inner-card-1 .register-h2 {
   color: #00A884;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
 }
 
-.register-inner-card-1 p {
-  padding: 5px;
-  font-size: 18px;
+.registerInnerCard1P {
+  width: 90%;
+  color: #8997A7;
+  font-size: 17px;
+  line-height: 28px;
+  margin-top: 18px;
 }
 
-.register-inner-card-2 img {
-  height: 400px;
-  width: 500px;
+.registerInner1TextPoints {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.register-user-right {
-  background-color: #FFFFFF;
-  width: 40%;
+.registerInner1TextPoints p {
+  color: #E5ECF2;
+  display: flex;
+  gap: 14px;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 17px;
+  margin: 0;
+}
+
+.registerInner1TextPoints span {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  background-color: #12352E;
+  color: #00A884;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  box-shadow: 0px 0px 15px 5px rgb(205, 204, 204);
-  border-radius: 10px;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.register-user-right {
+  background-color: #18232F;
+  border: 1px solid #253343;
+  flex: 1.15;
+  width: 55%;
+  max-width: 760px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 40px;
+  box-sizing: border-box;
 }
 
 .register-form {
   width: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
-.register-user {
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 25px;
+.register-user-heading {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.register-user-heading img {
-  width: 160px;
-  height: 80px;
-  object-fit: cover;
-  margin-top: 20px;
-}
-
-.register-user-heading span {
-  color: #00A884;
+.register-user-heading h2 {
+  color: #E5ECF2;
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
 }
 
 .register-user-heading p {
-  margin: 10px 0px 15px;
+  color: #8997A7;
+  font-size: 15px;
+  margin: 10px 0 0;
 }
 
 .register-user-details {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: start;
-}
-
-.register-user-login-details {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  text-align: start;
-  margin-top: 18px;
-}
-
-.register-user-signup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  margin-top: 17px;
-  margin-bottom: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 18px;
 }
 
 .register-input-group {
   width: 100%;
+  min-width: 0;
 }
 
 .register-input-group label {
   display: block;
-  margin-bottom: 8px;
-  color: #334155;
+  margin-bottom: 9px;
+  color: #C5D0DC;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .register-input-box {
+  width: 100%;
   display: flex;
   align-items: center;
-  background: #F8FAFC;
-  border-radius: 10px;
-  border: 1px solid #CBD5E1;
-  padding: 0 15px;
+  background-color: #0E1722;
+  border-radius: 9px;
+  border: 1px solid #293747;
+  padding: 0 13px;
+  box-sizing: border-box;
   transition: .3s;
 }
 
 .register-input-box span {
-  color: #94A3B8;
-  font-size: 23px;
+  color: #8997A7;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .register-input-box input {
+  width: 100%;
+  min-width: 0;
   flex: 1;
   border: none;
   outline: none;
   height: 48px;
   padding: 0 12px;
-  font-size: 17px;
-  color: #1E293B;
+  font-size: 14px;
+  color: #E5ECF2;
   background-color: transparent;
 }
 
 .register-input-box input::placeholder {
-  color: #94A3B8;
+  color: #8997A7;
 }
 
 .register-input-box:focus-within {
-  border: 2px solid #00A884;
-  box-shadow: 0 0 0 3px rgba(0, 168, 132, .15);
+  border-color: #00A884;
+  box-shadow: 0 0 0 2px rgba(0, 168, 132, .12);
 }
 
-.register-error {
-  display: block;
-  margin-top: 3px;
-  color: #EF4444;
-  font-size: 13px;
+.register-password-group {
+  grid-column: 1 / -1;
+}
+
+.password-eye {
+  cursor: pointer;
+}
+
+.register-form-error {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 0 0 18px;
+  background-color: #351C25;
+  border: 1px solid #78333D;
+  border-left: 4px solid #FF4D5A;
+  border-radius: 8px;
+  color: #FF858B;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.register-user-signup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 22px;
+  gap: 12px;
 }
 
 .register-user-signup button {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 80%;
-  font-size: 19px;
+  font-size: 16px;
+  font-weight: 600;
   padding: 15px;
   border: none;
-  background-color: #00A884;
-  color: white;
-  border-radius: 15px;
+  background-color: #10B981;
+  color: #071F1A;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .register-user-signup button:hover {
-  background-color: #00956F;
+  background-color: #00A884;
 }
 
-.register-user-signup span {
-  font-size: 18px;
-  margin-top: 10px;
+.register-user-signup button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
 }
 
-#register-link {
-  color: #00A884;
+.register-user-signup p {
+  color: #8997A7;
+  font-size: 14px;
+  margin: 3px 0 0;
+  text-align: center;
+}
+
+.register-user-signup a {
+  color: #00C896;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.register-user-signup a:hover {
+  text-decoration: underline;
 }
 
 .register-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid white;
+  border: 2px solid #071F1A;
   border-top: 2px solid transparent;
   border-radius: 50%;
   display: inline-block;
-  margin-right: 6px;
   animation: register-spin 0.6s linear infinite;
-}
-
-.register-form-error {
-  width: 80%;
-  padding: 10px 12px;
-  background-color: #FEF2F2;
-  border: 1px solid #FECACA;
-  border-left: 4px solid #EF4444;
-  border-radius: 6px;
-  color: #DC2626;
-  font-size: 14px;
-  font-weight: 500;
-  box-sizing: border-box;
 }
 
 @keyframes register-spin {
@@ -215,182 +272,249 @@
   }
 }
 
-
-@media (max-width: 1024px) {
-
+@media (max-width: 1200px) {
   .register-user-main {
-    flex-direction: column;
-    gap: 40px;
-    padding: 100px 20px 40px;
-  }
-
-  .register-user-card {
-    width: 90%;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .register-inner-card-2 img {
-    width: 400px;
-    height: auto;
-  }
-
-  .register-user-right {
-    width: 90%;
-    box-shadow: none;
-  }
-
-  .register-user {
-    width: 90%;
-  }
-
-}
-
-
-@media (max-width: 768px) {
-
-  .register-user-main {
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 90px 15px 30px;
     gap: 35px;
+    padding: 110px 4% 55px;
   }
 
-  .register-user-card {
-    width: 100%;
-    gap: 25px;
-    text-align: center;
+  .register-inner-card-1 .register-h1,
+  .register-inner-card-1 .register-h2 {
+    font-size: 40px;
   }
 
-  .register-inner-card-1 h1 {
-    font-size: 34px;
-  }
-
-  .register-inner-card-1 p {
-    font-size: 18px;
+  .registerInnerCard1P {
+    font-size: 15px;
     line-height: 25px;
   }
 
-  .register-inner-card-2 img {
-    width: 350px;
-    height: 250px;
+  .registerInner1TextPoints p {
+    font-size: 15px;
   }
 
   .register-user-right {
-    width: 100%;
-    margin-bottom: 20px;
+    padding: 30px;
   }
-
-  .register-form {
-    width: 100%;
-  }
-
-  .register-user {
-    width: 90%;
-  }
-
-  .register-user-heading img {
-    width: 140px;
-  }
-
-  .register-user-heading h2 {
-    font-size: 24px;
-  }
-
-  .register-user-heading p {
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .register-input-box input {
-    font-size: 15px;
-    height: 45px;
-  }
-
-  .register-input-box span {
-    font-size: 20px;
-  }
-
-  .register-user-signup button {
-    width: 80%;
-    font-size: 17px;
-    padding: 13px;
-  }
-
-  .register-user-signup span {
-    text-align: center;
-    font-size: 15px;
-  }
-
 }
 
-
-@media (max-width: 480px) {
-
+@media (max-width: 900px) {
   .register-user-main {
-    padding: 80px 10px 20px;
+    align-items: center;
+    gap: 40px;
+    padding: 105px 5% 50px;
   }
 
   .register-user-card {
-    width: 100%;
-    gap: 20px;
+    width: 42%;
   }
 
-  .register-inner-card-1 h1 {
-    font-size: 28px;
-  }
-
-  .register-inner-card-1 p {
-    font-size: 16px;
-    padding: 0;
-  }
-
-  .register-inner-card-2 img {
-    width: 300px;
-    height: 200px;
+  .register-inner-card-1 .register-h1,
+  .register-inner-card-1 .register-h2 {
+    font-size: 34px;
   }
 
   .register-user-right {
-    width: 100%;
-    border-radius: 8px;
-  }
-
-  .register-user {
-    width: 92%;
-  }
-
-  .register-user-heading img {
-    width: 120px;
+    width: 58%;
+    padding: 25px;
   }
 
   .register-user-heading h2 {
-    font-size: 22px;
+    font-size: 26px;
+  }
+
+  .register-user-details {
+    gap: 18px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-user-main {
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px;
+    padding: 105px 25px 45px;
+  }
+
+  .register-user-card {
+    flex: none;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+
+  .register-inner-card-1 {
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .register-inner-card-1 .register-h1,
+  .register-inner-card-1 .register-h2 {
+    font-size: 36px;
+  }
+
+  .registerInnerCard1P {
+    /* width: 0%; */
+    font-size: 15px;
+    line-height: 24px;
+    margin-top: 12px;
+  }
+
+  .registerInner1TextPoints {
+    width: fit-content;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .registerInner1TextPoints p {
+    font-size: 14px;
+  }
+
+  .registerInner1TextPoints span {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 16px;
+  }
+
+  .register-user-right {
+    flex: none;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+  }
+
+  .register-user-heading h2 {
+    font-size: 25px;
+  }
+
+  .register-user-heading p {
+    font-size: 13px;
   }
 
   .register-input-group label {
-    font-size: 14px;
-  }
-
-  .register-input-box {
-    padding: 0 10px;
+    font-size: 12px;
   }
 
   .register-input-box input {
-    height: 42px;
-    font-size: 14px;
-  }
-
-  .register-input-box span {
-    font-size: 18px;
+    height: 43px;
+    font-size: 13px;
   }
 
   .register-user-signup button {
-    font-size: 16px;
-    padding: 12px;
+    font-size: 14px;
+    padding: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-user-main {
+    padding: 95px 15px 35px;
+    gap: 28px;
   }
 
-  .register-user-signup span {
+  .register-inner-card-1 {
+    gap: 14px;
+  }
+
+  .register-inner-card-1 .register-h1,
+  .register-inner-card-1 .register-h2 {
+    font-size: 29px;
+  }
+
+  .registerInnerCard1P {
+    font-size: 13px;
+    line-height: 21px;
+  }
+
+  .registerInner1TextPoints {
+    gap: 9px;
+  }
+
+  .registerInner1TextPoints p {
+    font-size: 12px;
+  }
+
+  .registerInner1TextPoints span {
+    width: 25px;
+    height: 25px;
+    min-width: 25px;
     font-size: 14px;
   }
 
+  .register-user-right {
+    padding: 22px 15px;
+    border-radius: 10px;
+  }
+
+  .register-user-heading {
+    margin-bottom: 18px;
+  }
+
+  .register-user-heading h2 {
+    font-size: 21px;
+  }
+
+  .register-user-heading p {
+    font-size: 11px;
+  }
+
+  .register-user-details {
+    gap: 15px 9px;
+  }
+
+  .register-input-group label {
+    font-size: 11px;
+  }
+
+  .register-input-box {
+    padding: 0 8px;
+  }
+
+  .register-input-box input {
+    height: 38px;
+    padding: 0 8px;
+    font-size: 11px;
+  }
+
+  .register-input-box span {
+    font-size: 15px;
+  }
+
+  .register-user-signup {
+    margin-top: 17px;
+  }
+
+  .register-user-signup button {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .register-user-signup p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .register-user-main {
+    padding: 90px 12px 30px;
+  }
+
+  .register-user-details {
+    grid-template-columns: 1fr;
+  }
+
+  .register-password-group {
+    grid-column: auto;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 769px) {
+  .register-user-main {
+    align-items: flex-start;
+    padding-top: 110px;
+    padding-bottom: 35px;
+  }
 }

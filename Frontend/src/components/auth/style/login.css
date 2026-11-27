@@ -4,17 +4,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F8FAFC;
+  background-color: #0E1621;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sub-login {
   width: 35%;
-  height: 78%;
+  height: auto;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background-color: white;
-  box-shadow: 0px 0px 5px 1px #bcbdbe;
+  background-color: #18222E;
+  margin-top: 40px;
 
 }
 
@@ -44,11 +46,13 @@
 .heading-login h1 {
   font-style: italic;
   padding-bottom: 5px;
+  color: white;
 }
 
 .heading-login p {
   letter-spacing: 2px;
   font-size: 12px;
+  color: #94A4B3;
 }
 
 .heading-login img {
@@ -66,24 +70,24 @@
 .input-group label {
   display: block;
   margin-bottom: 8px;
-  color: #334155;
-  font-weight: 600;
+  color: #94A4B3;
+  font-weight: 400;
   font-size: 15px;
 }
 
 .input-box {
   display: flex;
   align-items: center;
-  background: #F8FAFC;
+  justify-content: center;
+  background: #0E1621;
   border-radius: 10px;
-  border: 1px solid #CBD5E1;
+  border: 1px solid #243040;
   padding: 0 15px;
   transition: .3s;
 }
 
 .input-box span {
-  color: #94A3B8;
-  font-size: 23px;
+  color: #8F9EAD;
 }
 
 .input-box input {
@@ -93,16 +97,16 @@
   height: 48px;
   padding: 0 12px;
   font-size: 17px;
-  color: #1E293B;
+  color: white;
   background-color: transparent;
 }
 
 .input-box input::placeholder {
-  color: #94A3B8;
+  color: #8F9EAD;
 }
 
 .input-box:focus-within {
-  border: 2px solid #00A884;
+  border: 0.5px solid #00A884;
   box-shadow: 0 0 0 3px rgba(0, 168, 132, .15);
 }
 
@@ -112,23 +116,26 @@
   padding: 15px;
   font-size: 20px;
   border: none;
-  background-color: #00A884;
-  color: white;
+  background-color: #10B982;
+  color: #071611;
   border-radius: 10px;
   letter-spacing: 1px;
   margin-bottom: 8px;
   margin-top: 8px;
+  font-weight: 800;
 
 }
 
-.submit-login p {
-  font-size: 18px;
+.submit-login p{
+  font-size: 15px;
   padding-bottom: 20px;
+  color: #8E9EB0;
 }
 
 .submit-login p span {
   color: #00A884;
   cursor: pointer;
+  padding-left: 5px;
 }
 
 .check-box {
@@ -155,7 +162,7 @@
 }
 
 .check-box p {
-  color: rgb(4, 148, 237);
+  color: #2D8D6F;
   font-size: 17px;
 }
 
@@ -175,24 +182,24 @@
   display: block;
   margin-top: 4px;
   font-size: 15px;
-  color: rgb(133, 7, 7);
+  /* color: #F2674F; */
 }
 
 .login-form-error {
   width: 80%;
   padding: 10px 12px;
-  background-color: #FEF2F2;
-  border: 1px solid #FECACA;
+  background-color: #351C25;
+  border: 1px solid #77333D;
   border-left: 4px solid #EF4444;
   border-radius: 6px;
-  color: #DC2626;
+   color: #F2674F;
   font-size: 14px;
   font-weight: 500;
   box-sizing: border-box;
 }
 
 .password-eye{
-    padding-top: 10px;
+    padding-top: 8px;
   }
 
 input::-ms-reveal,
@@ -217,6 +224,7 @@ input::-webkit-credentials-auto-fill-button {
   .sub-login {
     width: 60%;
     height: auto;
+    margin-top: 0px;
   }
 
   .input-login input {
@@ -228,9 +236,7 @@ input::-webkit-credentials-auto-fill-button {
     font-size: 20px;
   }
 
-  .submit-login p {
-    font-size: 20px;
-  }
+ 
 
   .error {
     width: 90%;
@@ -244,6 +250,7 @@ input::-webkit-credentials-auto-fill-button {
   }
   .sub-login{
     width: 100%;
+    margin-top: 20px;
   }
   .input-group{
     width: 90%;
@@ -292,8 +299,7 @@ input::-webkit-credentials-auto-fill-button {
   }
 
   .check-box {
-    padding: 10px;
-    margin-bottom: 5px;
+    padding: 10px 0px;
 
   }
 
@@ -313,4 +319,7 @@ input::-webkit-credentials-auto-fill-button {
   }
   
 }
+
+
+
 

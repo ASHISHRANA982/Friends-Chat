@@ -67,7 +67,7 @@ const Navbar = () => {
         {authChecked && !isAuthenticated && (
           <ul className="nav-right">
 
-            <li className="login nav-link" onClick={handleOpen}>
+            <li className="login " onClick={handleOpen}>
               <Link to="/login">Login</Link>
             </li>
 

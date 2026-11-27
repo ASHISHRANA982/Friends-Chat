@@ -6,9 +6,7 @@ import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useDispatch, useSelector } from 'react-redux'
 import { createUser, clearMessage } from '../../api-calls/auth/registerSlice'
-import RegisterImg from '../../assets/Register.png'
 import { MdPerson2, MdEmail, MdPassword, MdPhone } from "react-icons/md"
-import { IoArrowForward } from "react-icons/io5"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { toast } from "sonner"
 
@@ -164,27 +162,32 @@ const UserRegistration = () => {
             </h1>
 
             <h1 className='register-h2'>
-              Stay. Together.
+              Stay together.
             </h1>
+
+            <p className='registerInnerCard1P'>
+              Create your account and start your journey with Friends Chat.
+            </p>
           </div>
 
-          <div>
-            <p>Create your account and start your</p>
-            <p>journey with Friends Chat. Stay</p>
-            <p>connected with your friends</p>
-            <p>anytime, anywhere.</p>
+          <div className='registerInner1TextPoints'>
+
+            <p>
+              <span>✓</span>
+              Real-time messaging
+            </p>
+
+            <p>
+              <span>✓</span>
+              Search users and send friend requests
+            </p>
+
+            <p>
+              <span>✓</span>
+              Private and secure
+            </p>
+
           </div>
-
-        </div>
-
-        <div className="register-inner-card-2">
-
-          <img
-            src={RegisterImg}
-            alt="Registration"
-            loading='eager'
-            fetchPriority='high'
-          />
 
         </div>
 
@@ -197,10 +200,10 @@ const UserRegistration = () => {
           className='register-form'
         >
 
-          <div className='register-user register-user-heading'>
+          <div className='register-user-heading'>
 
             <h2>
-              Create <span>Your Account</span>
+              Create your account
             </h2>
 
             <p>
@@ -215,12 +218,12 @@ const UserRegistration = () => {
             </p>
           )}
 
-          <div className='register-user register-user-details'>
+          <div className='register-user-details'>
 
             <div className='register-input-group'>
 
               <label htmlFor='name'>
-                Full Name
+                Full name
               </label>
 
               <div className='register-input-box'>
@@ -230,7 +233,7 @@ const UserRegistration = () => {
                 </span>
 
                 <input
-                  placeholder='Enter Your Full Name'
+                  placeholder='Enter your full name'
                   type="text"
                   id="name"
                   {...register('name', {
@@ -245,7 +248,7 @@ const UserRegistration = () => {
             <div className='register-input-group'>
 
               <label htmlFor='phone'>
-                Mobile No
+                Mobile number
               </label>
 
               <div className='register-input-box'>
@@ -255,7 +258,7 @@ const UserRegistration = () => {
                 </span>
 
                 <input
-                  placeholder='Enter Your Phone No'
+                  placeholder='Enter your phone number'
                   type="text"
                   id="phone"
                   {...register('phone', {
@@ -270,7 +273,7 @@ const UserRegistration = () => {
             <div className='register-input-group'>
 
               <label htmlFor='email'>
-                Email Address
+                Email address
               </label>
 
               <div className='register-input-box'>
@@ -280,7 +283,7 @@ const UserRegistration = () => {
                 </span>
 
                 <input
-                  placeholder='Enter Your Email Address'
+                  placeholder='Enter your email'
                   type="email"
                   id="email"
                   {...register('email', {
@@ -291,10 +294,6 @@ const UserRegistration = () => {
               </div>
 
             </div>
-
-          </div>
-
-          <div className='register-user register-user-login-details'>
 
             <div className='register-input-group'>
 
@@ -309,7 +308,7 @@ const UserRegistration = () => {
                 </span>
 
                 <input
-                  placeholder='Enter Your Username'
+                  placeholder='Choose a username'
                   type="text"
                   id='username'
                   {...register('username', {
@@ -321,7 +320,7 @@ const UserRegistration = () => {
 
             </div>
 
-            <div className='register-input-group'>
+            <div className='register-input-group register-password-group'>
 
               <label htmlFor='password'>
                 Password
@@ -334,7 +333,7 @@ const UserRegistration = () => {
                 </span>
 
                 <input
-                  placeholder='Enter Your Password'
+                  placeholder='Create a password'
                   type={showPassword ? "text" : "password"}
                   id='password'
                   {...register('password', {
@@ -360,7 +359,7 @@ const UserRegistration = () => {
 
           </div>
 
-          <div className='register-user register-user-signup'>
+          <div className='register-user-signup'>
 
             <button
               type="submit"
@@ -373,24 +372,17 @@ const UserRegistration = () => {
                   Creating...
                 </>
               ) : (
-                <>
-                  Create Account
-                  <IoArrowForward />
-                </>
+                "Create account"
               )}
 
             </button>
 
-            <span>
-              Already Have An Account ?
-
-              <span id='register-link'>
-                <Link to="/login">
-                  Sign in
-                </Link>
-              </span>
-
-            </span>
+            <p>
+              Already have an account?
+              <Link to="/login">
+                Sign in
+              </Link>
+            </p>
 
           </div>
 
@@ -403,3 +395,4 @@ const UserRegistration = () => {
 }
 
 export default UserRegistration
+

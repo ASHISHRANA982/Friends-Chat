@@ -1,48 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFriends, clearFriendsAddData } from '../../api-calls/user/friendsSlice';
-import './style/userFriends.css';
+import './style/addFriends.css';
 import { toast } from "sonner";
 import { toastStyles } from "../../components/common/toastStyles";
+import {Link, useNavigate} from "react-router-dom"
 
-export default function AddFriend({ setShowPopUp }) {
+export default function AddFriend() {
 
   const [friendName, setFriendName] = useState("");
   const [friendPhoneNo, setFriendPhoneNo] = useState("")
+
+  const navigate=useNavigate();
 
   const dispatcher = useDispatch();
   const { loading, addMessage, addError } = useSelector((state) => state.friendsSlice)
 
   useEffect(() => {
     if (addMessage) {
-      toast.success(addMessage.message,{
-        style:toastStyles.success
+      toast.success(addMessage.message, {
+        style: toastStyles.success
       })
       setFriendName("");
       setFriendPhoneNo("");
-      setShowPopUp(false);
       dispatcher(clearFriendsAddData())
     }
 
     if (addError) {
-      if(addError.errors){
-        Object.values(addError.errors).forEach((message)=>{
-          toast.error(message,{
-            style:toastStyles.error
+      if (addError.errors) {
+        Object.values(addError.errors).forEach((message) => {
+          toast.error(message, {
+            style: toastStyles.error
           });
         })
       }
-      else{
+      else {
         toast.error(addError.message || "Failed To Add Friend",
           {
-            style:toastStyles.error
+            style: toastStyles.error
           }
         )
       }
       dispatcher(clearFriendsAddData())
     }
 
-  }, [addError, addMessage, dispatcher, setShowPopUp])
+  }, [addError, addMessage, dispatcher])
 
   function handleSubmit() {
     dispatcher(addFriends({
@@ -52,44 +54,43 @@ export default function AddFriend({ setShowPopUp }) {
   }
 
   return (
-    <div>
-      <div
-        className="popup-overlay"
-        onClick={() => setShowPopUp(false)}
-      ></div>
+    <div id='addFriendsMain'>
 
-      <div className="popup">
-        <h3>Add New Friend</h3>
+      <div className="addFriendsSub">
 
-        <input
-          type="text"
-          placeholder="Enter Friend Name"
-          value={friendName}
-          onChange={(e) => setFriendName(e.target.value)}
-        />
+        <h3 className='addFriendsHeading'>Add New Friend</h3>
 
-        <input
-          type="text"
-          placeholder="Enter Friend PhoneNo"
-          value={friendPhoneNo}
-          maxLength={10}
-          onChange={(e) => {
-            const value = e.target.value.replace(/\D/g, "");
-            setFriendPhoneNo(value);
-          }}
-        />
+        <div className="addFriendsInputGroup">
+          <input
+            className='inputBox'
+            type="text"
+            placeholder="Enter friend name"
+            value={friendName}
+            onChange={(e) => setFriendName(e.target.value)}
+          />
 
-        <div className="popup-inner">
-          <button
-            className="close-btn"
-            onClick={() => setShowPopUp(false)}
-          >
-            Close
+          <input
+            className='inputBox'
+            autoComplete='off'
+            type="text"
+            placeholder="Enter friend phoneno"
+            value={friendPhoneNo}
+            maxLength={10}
+            onChange={(e) => {
+              const value = e.target.value.replace(/\D/g, "");
+              setFriendPhoneNo(value);
+            }}
+          />
+        </div>
+
+        <div className="addFriendsButton">
+          <button onClick={()=>navigate("/root")} className="cancelButton">
+            Cancle
           </button>
 
           <button
             onClick={handleSubmit}
-            disabled={loading || !friendName.trim() || friendPhoneNo.length !== 10} className="add-btn">
+            disabled={loading || !friendName.trim() || friendPhoneNo.length !== 10} className="addButton">
             {loading ? "Adding.." : "Add"}
           </button>
         </div>

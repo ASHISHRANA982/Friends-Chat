@@ -4,14 +4,14 @@
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#f4f7fb;
+    background:#0E1621;
 }
 
 .denied-card{
     width:420px;
     padding:40px;
     text-align:center;
-    background:white;
+    background:#18222E;
     border-radius:15px;
     box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
@@ -30,11 +30,11 @@
 
 .denied-card h2{
     margin:10px 0;
-    color:#333;
+    color:white;
 }
 
 .denied-card p{
-    color:#666;
+    color:#8F9EAD;
     line-height:1.6;
     margin:20px 0;
 }
@@ -64,8 +64,9 @@
 }
 
 .login-btn{
-    background:#0F172A;
-    color:white;
+    background:#101C2A;
+    color:#00A884;
+    border: 2px solid #00A884;
 }
 
 .login-btn:hover{

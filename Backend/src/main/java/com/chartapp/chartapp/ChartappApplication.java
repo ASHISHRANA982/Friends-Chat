@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableScheduling
 public class ChartappApplication {
 
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(ChartappApplication.class, args);

@@ -11,7 +11,7 @@ import { MdPerson2, MdPassword } from "react-icons/md"
 import { toast } from "sonner"
 import { FaEye, FaEyeSlash } from "react-icons/fa"
 import { toastStyles } from '../../components/common/toastStyles'
-import { clearProfileMessage } from '../../api-calls/user/profileSlice'
+import { clearProfileMessage ,userProfile} from '../../api-calls/user/profileSlice'
 
 const schema = z.object({
   username: z
@@ -62,36 +62,44 @@ const UserLogin = () => {
 
   }, [errors])
 
+
   useEffect(() => {
 
-    if (success) {
-
+  const handleLoginSuccess = async () => {
+    try {
       toast.success(success.message, {
         style: toastStyles.success
-      })
+      });
 
-      dispatcher(loginSuccess())
-      dispatcher(clearMessage())
-      navigate("/profile")
+      dispatcher(loginSuccess());
+      dispatcher(clearMessage());
+
+      await dispatcher(userProfile()).unwrap();
+
+      navigate("/root", { replace: true });
+
+    } catch (error) {
+      console.error("Profile loading failed:", error);
+      setLoginError("Unable to load user profile. Please try again.");
+    }
+  };
+
+  if (success) {
+    handleLoginSuccess();
+  }
+
+  if (error) {
+    if (error.errors) {
+      const message = Object.values(error.errors)[0];
+      setLoginError(message);
+    } else {
+      setLoginError(error.message || "Login failed");
     }
 
-    if (error) {
+    dispatcher(clearMessage());
+  }
 
-      if (error.errors) {
-
-        const message = Object.values(error.errors)[0]
-        setLoginError(message)
-
-      } else {
-
-        setLoginError(error.message || "Login failed")
-
-      }
-
-      dispatcher(clearMessage())
-    }
-
-  }, [success, error, dispatcher, navigate])
+}, [success, error, dispatcher, navigate]);
 
   const handleUsernameChange = () => {
     setLoginError("")
@@ -144,7 +152,7 @@ const UserLogin = () => {
 
             <div className="input-box">
 
-              <MdPerson2 size={24} />
+             <span> <MdPerson2 size={24} /></span>
 
               <input
                 className='input-1'
@@ -167,7 +175,8 @@ const UserLogin = () => {
 
             <div className="input-box">
 
-              <MdPassword size={24} />
+                <span>
+              <MdPassword size={24} /></span>
 
               <input
                 className='input-1'
@@ -184,7 +193,7 @@ const UserLogin = () => {
                 className='password-eye'
                 onClick={() => setShowPassword((prev) => !prev)}
               >
-                {showPassword ? <FaEye /> : <FaEyeSlash />}
+                {showPassword ? <FaEye size={20}/> : <FaEyeSlash size={20}/>}
               </span>
 
             </div>
@@ -222,7 +231,7 @@ const UserLogin = () => {
             Don't have an account?
             <span>
               <Link to='/register'>
-                Register
+                   Register
               </Link>
             </span>
           </p>

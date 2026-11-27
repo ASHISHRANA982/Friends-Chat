@@ -35,7 +35,6 @@ const Home = () => {
 
               <div className='home-button-div'>
                 <button className='btn-1' onClick={() => navigate("/register")}>Get Started
-                  <span><IoArrowForward /></span>
                 </button>
 
                 <button className='btn-2' onClick={() => navigate("/login")}><MdPerson2 />Login</button>
@@ -56,7 +55,7 @@ const Home = () => {
         <div className='home-sub-container' >
 
         <div className='sub-box1-container'>
-          <h2>Why Choose <span>Friends Chat</span> ?</h2>
+          <h2>Why Choose <span>Friends Chat ?</span></h2>
         </div>
 
         <div className='sub-box2-container'>

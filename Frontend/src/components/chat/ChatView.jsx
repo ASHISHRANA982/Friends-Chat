@@ -9,23 +9,24 @@ import { toast } from "sonner";
 import { MdBlock, MdDeleteForever, MdDeleteOutline } from "react-icons/md";
 import { updateAccountBlockConnected, clearBlockAndConnected } from '../../api-calls/user/friendsSlice';
 import { toastStyles } from "../../components/common/toastStyles";
-import defaultProfileImage from '../../assets/defaultProfileImage.png'
-import { useChat } from './ChatContext';
+import nameToHexColor from '../colorGenerate';
+import { getInitials } from '../colorGenerate';
 
-export default function ChatView() {
+
+export default function ChatView({ selectedContact, setSelectedContact, setShowContact }) {
 
 
   const [text, setText] = useState("");
   const dispatch = useDispatch();
 
+
   const { success } = useSelector((state) => state.profileSlice)
   const { loading, conversations, error } = useSelector((state) => state.messageSlice);
   const { blockAndConnectedLoading, blockAndconnectedStatus, blockAndconnectedStatusError } = useSelector((state) => state.friendsSlice);
 
-  const {selectedContact,setSelectedContact}=useChat();
 
   const messages = conversations || [];
-  const inputRef = useRef(null); 
+  const inputRef = useRef(null);
   const chatContainerRef = useRef(null);
 
 
@@ -95,9 +96,9 @@ export default function ChatView() {
 
     setText("");
     if (inputRef.current) {
-    inputRef.current.style.height = "auto"; 
-    inputRef.current.focus();               
-  }
+      inputRef.current.style.height = "auto";
+      inputRef.current.focus();
+    }
 
   };
 
@@ -200,17 +201,17 @@ export default function ChatView() {
 
 
   useEffect(() => {
-   
+
     if (!window.visualViewport || window.innerWidth > 768) return;
 
     const handleVisualViewportChange = () => {
       if (chatContainerRef.current) {
         chatContainerRef.current.style.height = `${window.visualViewport.height}px`;
-        
-        
+
+
         chatContainerRef.current.style.transform = `translateY(${window.visualViewport.offsetTop}px)`;
-        
-       
+
+
         const chatBody = chatContainerRef.current.querySelector('.chat-body');
         if (chatBody) {
           chatBody.scrollTop = chatBody.scrollHeight;
@@ -218,9 +219,9 @@ export default function ChatView() {
       }
     };
 
-   
+
     const preventWindowBounce = (e) => {
-      
+
       if (!e.target.closest('.chat-body')) {
         e.preventDefault();
       }
@@ -230,7 +231,7 @@ export default function ChatView() {
     window.visualViewport.addEventListener('scroll', handleVisualViewportChange);
     document.body.addEventListener('touchmove', preventWindowBounce, { passive: false });
 
-  
+
     handleVisualViewportChange();
 
     return () => {
@@ -259,19 +260,34 @@ export default function ChatView() {
 
           <div className='header-sub'>
 
-            <button className='back-btn' onClick={() => setSelectedContact(null)}><IoArrowBack size={22} /></button>
+            <button className='back-btn' onClick={() => { setSelectedContact(null); setShowContact(true) }}><IoArrowBack size={22} /></button>
 
             {
               selectedContact &&
               (
                 <div className='chat-sub-div' key={selectedContact.id}>
-                  <img className='chat-image' src={selectedContact.profileImage || defaultProfileImage}
-                    alt="Profile"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = defaultProfileImage;
-                    }}
-                  />
+
+                  {
+
+                    selectedContact.profileImage ?
+                      <img className='chat-image' src={selectedContact.profileImage} /> :
+                      <span
+                        style={{
+                          height: '50px',
+                          width: '50px',
+                          minWidth: '50px',
+                          borderRadius: '50%',
+                          backgroundColor: nameToHexColor(selectedContact.name),
+                          fontSize: '20px',
+                          color: 'white',
+                          display: 'inline-flex',
+                          justifyContent: 'center',
+                          alignItems: 'center'
+                        }}
+                      >
+                        {getInitials(selectedContact.name)}
+                      </span>
+                  }
 
                   <div className='chat-upper-details'>
                     <p className='p1'>{selectedContact.contactName}</p>
