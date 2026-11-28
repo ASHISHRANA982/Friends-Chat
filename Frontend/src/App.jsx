@@ -21,6 +21,7 @@ import {  initializeCsrf } from './services/csrfService'
 import Root from './components/Root'
 import AddFriend from './components/user/AddFriend'
 import Invitation from './components/user/Invitation'
+import RequestPage from './components/user/RequestPage'
 
 
 const ProtectedRoute = ({ children }) => {
@@ -90,7 +91,7 @@ initializeCsrf();
 
         <Route path="/addFriends" element={<ProtectedRoute><AddFriend /></ProtectedRoute>} />
 
-        <Route path="/request" element={<ProtectedRoute><Request /></ProtectedRoute>} />
+        <Route path="/request" element={<ProtectedRoute><RequestPage /></ProtectedRoute>} />
 
         <Route path="/invitation" element={<ProtectedRoute><Invitation /></ProtectedRoute>} />
 

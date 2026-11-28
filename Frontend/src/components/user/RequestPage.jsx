@@ -7,8 +7,10 @@ import {
 import { useEffect } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import nameToHexColor from './../colorGenerate';
-import { getInitials } from './../colorGenerate';
+import nameToHexColor from '../colorGenerate';
+import { getInitials } from '../colorGenerate';
+import { toast } from 'sonner';
+import {toastStyles} from '../common/toastStyles'
 
 const Request = () => {
 
